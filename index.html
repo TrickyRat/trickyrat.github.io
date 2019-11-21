@@ -44,6 +44,75 @@
 </header>
   <div id="content" class="inner">
     <div id="main-col" class="alignleft"><div id="wrapper">
+  <article id="post-Leetcode-02" class="h-entry post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time class="dt-published" datetime="2019-11-21T15:22:16.000Z"><a href="/2019/11/21/Leetcode-02/">2019-11-21</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2019/11/21/Leetcode-02/">Leetcode-02</a></h1>
+  
+
+    </header>
+    <div class="e-content entry" itemprop="articleBody">
+      
+        <img src="/2019/11/21/Leetcode-02/20191117.jpg" class="" title="Header Image">
+
+<h2 id="两数相加（Add-Two-Numbers）"><a href="#两数相加（Add-Two-Numbers）" class="headerlink" title="两数相加（Add Two Numbers）"></a>两数相加（Add Two Numbers）</h2><h3 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h3><p>给出两个非空的链表用来表示两个非负的整数。其中，它们各自的位数是按照逆序的方式存储的，并且它们的每个节点只能存储一位数字。<br>如果，我们将这两个数相加起来，则会返回一个新的链表来表示它们的和。</p>
+<p>您可以假设除了数字 0 之外，这两个数都不会以 0 开头。  </p>
+<h3 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h3><p>输入：(2 -&gt; 4 -&gt; 3) + (5 -&gt; 6 -&gt; 4)<br>输出：7 -&gt; 0 -&gt; 8<br>原因：342 + 465 = 807  </p>
+<h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>其实和我们算加法一样原来计算就行了,如图所示  </p>
+<img src="/2019/11/21/Leetcode-02/figure1.png" class="" title="Figure1">
+<p>只要把两条链表相应位置相加，记录是否有进位(通过sum/10来判断)，有则进位，添加到一条新的链表极结点就行了。值得注意的是，相加后有几种结果，分别是  </p>
+<table>
+<thead>
+<tr>
+<th align="center">情况</th>
+<th align="center">结果</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">1+1</td>
+<td align="center">不进位</td>
+</tr>
+<tr>
+<td align="center">12+8</td>
+<td align="center">进一次位</td>
+</tr>
+<tr>
+<td align="center">9993+7</td>
+<td align="center">进多次位</td>
+</tr>
+<tr>
+<td align="center">0+12</td>
+<td align="center">有空的结点</td>
+</tr>
+</tbody></table>
+<p>对应结点的和为sum = x + y + carry，carry则是sum/10，对应的该位结点值为sum%10。  </p>
+<p>时间复杂度为O(max(m,n))，m和n分别是两条链表的长度；<br>空间复杂度为O(max(m,n))，需要新的一条链表，最多为max(m,n)+1(最高位有进位情况)。  </p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title">Solution</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> ListNode <span class="title">AddTwoNumbers</span>(<span class="params">ListNode l1, ListNode l2</span>)</span></span><br><span class="line"><span class="function"></span>    &#123;</span><br><span class="line">        <span class="comment">// 116ms</span></span><br><span class="line">        ListNode dummyHead = <span class="keyword">new</span> ListNode(<span class="number">0</span>);</span><br><span class="line">        <span class="keyword">if</span> (l1 == <span class="literal">null</span> &amp;&amp; l2 == <span class="literal">null</span>)</span><br><span class="line">            <span class="keyword">return</span> dummyHead;</span><br><span class="line">        <span class="keyword">int</span> carry = <span class="number">0</span>;</span><br><span class="line">        ListNode curr = dummyHead;</span><br><span class="line">        <span class="keyword">while</span> (l1 != <span class="literal">null</span> || l2 != <span class="literal">null</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">int</span> num1 = l1?.val ?? <span class="number">0</span>;</span><br><span class="line">            <span class="keyword">int</span> num2 = l2?.val ?? <span class="number">0</span>;</span><br><span class="line">            <span class="keyword">int</span> sum = num1 + num2 + carry;</span><br><span class="line">            curr.next = <span class="keyword">new</span> ListNode(sum % <span class="number">10</span>);</span><br><span class="line">            curr = curr.next;</span><br><span class="line">            carry = sum / <span class="number">10</span>;</span><br><span class="line">            l1 = l1?.next;</span><br><span class="line">            l2 = l2?.next;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (carry != <span class="number">0</span>)</span><br><span class="line">            curr.next = <span class="keyword">new</span> ListNode(carry);</span><br><span class="line">        <span class="keyword">return</span> dummyHead.next;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 148ms</span></span><br><span class="line">        <span class="comment">// ListNode r = new ListNode(-1);</span></span><br><span class="line">        <span class="comment">// ListNode n = r;</span></span><br><span class="line">        <span class="comment">// int carry = 0;</span></span><br><span class="line">        <span class="comment">// while (carry &gt; 0 || l1 != null || l2 != null)</span></span><br><span class="line">        <span class="comment">// &#123;</span></span><br><span class="line">        <span class="comment">//     int sum = (l1?.val ?? 0) + (l2?.val ?? 0) + carry;</span></span><br><span class="line">        <span class="comment">//     carry = sum / 10;</span></span><br><span class="line">        <span class="comment">//     n = n.next = new ListNode(sum % 10);</span></span><br><span class="line">        <span class="comment">//     l1 = l1?.next;</span></span><br><span class="line">        <span class="comment">//     l2 = l2?.next;</span></span><br><span class="line">        <span class="comment">// &#125;</span></span><br><span class="line">        <span class="comment">// return r.next;</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="题源"><a href="#题源" class="headerlink" title="题源"></a>题源</h3><p>截图来自<a href="https://leetcode-cn.com/add-two-numbers" target="_blank" rel="noopener">Leetcode-cn</a>.</p>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+
   <article id="post-Leetcode-01" class="h-entry post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   
   <div class="post-content">
@@ -237,7 +306,7 @@
   <h3 class="title">分类</h3>
   <ul class="entry">
   
-    <li><a href="/categories/Algorithm-DataStructure/">Algorithm/DataStructure</a><small>1</small></li>
+    <li><a href="/categories/Algorithm-DataStructure/">Algorithm/DataStructure</a><small>2</small></li>
   
     <li><a href="/categories/C-NET/">C#/.NET</a><small>1</small></li>
   
