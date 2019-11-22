@@ -1,0 +1,201 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  
+  <title>Leetcode-03 | Murmur</title>
+  <meta name="author" content="Wang Jian">
+  
+  <meta name="description" content="无重复字符的最长子串（Longest Substring Without Repeating Characters）描述给定一个字符串，请你找出其中不含有重复字符的 最长子串 的长度。    
+示例示例 1:  
+输入: “abcabcbb”输出: 3解释: 因为无重复字符的最长子串是 “abc”，">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="Leetcode-03"/>
+  <meta property="og:site_name" content="Murmur"/>
+
+  
+    <meta property="og:image" content=""/>
+  
+
+  <link href="/favicon.png" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="Murmur" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  
+
+</head>
+
+
+<body>
+  <header id="header" class="inner"><div class="alignleft">
+  <h1><a href="/">Murmur</a></h1>
+  <h2><a href="/"></a></h2>
+</div>
+<nav id="main-nav" class="alignright">
+  <ul>
+    
+      <li><a href="/">Home</a></li>
+    
+      <li><a href="/archives">Archives</a></li>
+    
+  </ul>
+  <div class="clearfix"></div>
+</nav>
+<div class="clearfix"></div>
+</header>
+  <div id="content" class="inner">
+    <div id="main-col" class="alignleft"><div id="wrapper"><article id="post-Leetcode-03" class="h-entry post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time class="dt-published" datetime="2019-11-22T06:53:11.000Z"><a href="/2019/11/22/Leetcode-03/">2019-11-22</a></time>
+      
+      
+  
+    <h1 class="p-name title" itemprop="headline name">Leetcode-03</h1>
+  
+
+    </header>
+    <div class="e-content entry" itemprop="articleBody">
+      
+        
+
+<h2 id="无重复字符的最长子串（Longest-Substring-Without-Repeating-Characters）"><a href="#无重复字符的最长子串（Longest-Substring-Without-Repeating-Characters）" class="headerlink" title="无重复字符的最长子串（Longest Substring Without Repeating Characters）"></a>无重复字符的最长子串（Longest Substring Without Repeating Characters）</h2><h3 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h3><p>给定一个字符串，请你找出其中不含有重复字符的 最长子串 的长度。    </p>
+<h3 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h3><p>示例 1:  </p>
+<p>输入: “abcabcbb”<br>输出: 3<br>解释: 因为无重复字符的最长子串是 “abc”，所以其长度为 3。  </p>
+<p>示例 2:</p>
+<p>输入: “bbbbb”<br>输出: 1<br>解释: 因为无重复字符的最长子串是 “b”，所以其长度为 1。  </p>
+<p>示例 3:  </p>
+<p>输入: “pwwkew”<br>输出: 3<br>解释: 因为无重复字符的最长子串是 “wke”，所以其长度为 3。<br>     请注意，你的答案必须是 子串 的长度，”pwke” 是一个子序列，不是子串。  </p>
+<h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>我们可以维护一个范围[i, j)的窗口来保存子串，使用HashSet/HashMap作为容器，对s进行遍历。如果窗口中不包含有s[j]，则将s[j]添加到窗口中并计数，反之，将s[i]从窗口中移除。也可以使用一个int数组来代替HashSet。  </p>
+<table>
+<thead>
+<tr>
+<th align="center">数组</th>
+<th align="center">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">int [26]</td>
+<td align="center">‘A’-‘Z’和’a’-‘z’</td>
+</tr>
+<tr>
+<td align="center">int [128]</td>
+<td align="center">ASCII码</td>
+</tr>
+<tr>
+<td align="center">int [256]</td>
+<td align="center">ASCII扩展码</td>
+</tr>
+</tbody></table>
+<p>时间复杂度为O(n)，遍历一次s，n为s的长度；<br>空间复杂度为O(min(m,n))，需要额外的HashSet，取决于s的长度n和窗口长度m。  </p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title">Solution</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">LongestSubstringWithoutRepeating</span>(<span class="params"><span class="keyword">string</span> s</span>)</span></span><br><span class="line"><span class="function"></span>    &#123;</span><br><span class="line">        <span class="comment">// 96 ms int[]</span></span><br><span class="line">        <span class="comment">// int n = s.Length, ans = 0;</span></span><br><span class="line">        <span class="comment">// int[] index = new int[128]; // new int[256];</span></span><br><span class="line">        <span class="comment">// for (int j = 0, i = 0; j &lt; n; j++)</span></span><br><span class="line">        <span class="comment">// &#123;</span></span><br><span class="line">        <span class="comment">//     i = Math.Max(index[s[j]], i);</span></span><br><span class="line">        <span class="comment">//     ans = Math.Max(ans, j - i + 1);</span></span><br><span class="line">        <span class="comment">//     index[s[j]] = j + 1;</span></span><br><span class="line">        <span class="comment">// &#125;</span></span><br><span class="line">        <span class="comment">// return ans;</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">// 100 ms HashSet&lt;char&gt;</span></span><br><span class="line">        <span class="comment">// int len = s.Length;</span></span><br><span class="line">        <span class="comment">// HashSet&lt;char&gt; set = new HashSet&lt;char&gt;();</span></span><br><span class="line">        <span class="comment">// int ans = 0, i = 0, j = 0;</span></span><br><span class="line">        <span class="comment">// while (i &lt; len &amp;&amp; j &lt; len)</span></span><br><span class="line">        <span class="comment">// &#123;</span></span><br><span class="line">        <span class="comment">//     if (!set.Contains(s[j]))</span></span><br><span class="line">        <span class="comment">//     &#123;</span></span><br><span class="line">        <span class="comment">//         set.Add(s[j++]);</span></span><br><span class="line">        <span class="comment">//         ans = Math.Max(ans, j - i);</span></span><br><span class="line">        <span class="comment">//     &#125;</span></span><br><span class="line">        <span class="comment">//     else set.Remove(s[i++]);</span></span><br><span class="line">        <span class="comment">// &#125;</span></span><br><span class="line">        <span class="comment">// return ans;</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">// 100ms Dictionary&lt;char, int&gt;</span></span><br><span class="line">        <span class="keyword">int</span> n = s.Length, ans = <span class="number">0</span>;</span><br><span class="line">        Dictionary&lt;<span class="keyword">char</span>, <span class="keyword">int</span>&gt; dic = <span class="keyword">new</span> Dictionary&lt;<span class="keyword">char</span>, <span class="keyword">int</span>&gt;();</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>, i = <span class="number">0</span>; j &lt; n; j++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span> (dic.ContainsKey(s[j]))</span><br><span class="line">            &#123;</span><br><span class="line">                i = Math.Max(dic[s[j]], i);</span><br><span class="line">                dic[s[j]] = j + <span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span> dic.Add(s[j], j + <span class="number">1</span>);</span><br><span class="line">            ans = Math.Max(ans, j - i + <span class="number">1</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+        
+  <div class="addthis addthis_toolbox addthis_default_style">
+    
+      <a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>
+    
+    
+      <a class="addthis_button_tweet"></a>
+    
+    
+      <a class="addthis_button_google_plusone" g:plusone:size="medium"></a>
+    
+    
+      <a class="addthis_button_pinterest_pinit" pi:pinit:layout="horizontal"></a>
+    
+    <a class="addthis_counter addthis_pill_style"></a>
+  </div>
+  <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js"></script>
+
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+<section id="comment">
+  <h1 class="title">留言</h1>
+
+  
+      <div id="fb-root"></div>
+<script>
+  (function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=123456789012345";
+    fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'facebook-jssdk'));
+</script>
+
+<div class="fb-comments" data-href="http://yoursite.com/2019/11/22/Leetcode-03/index.html" data-num-posts="5" data-width="840" data-colorscheme="light"></div>
+      
+  
+</section>
+
+</div></div>
+    <aside id="sidebar" class="alignright">
+  <div class="search">
+  <form action="//google.com/search" method="get" accept-charset="utf-8">
+    <input type="search" name="q" results="0" placeholder="搜索">
+    <input type="hidden" name="as_sitesearch" value="yoursite.com">
+  </form>
+</div>
+
+
+  
+<div class="widget tag">
+  <h3 class="title">分类</h3>
+  <ul class="entry">
+  
+    <li><a href="/categories/Algorithm-DataStructure/">Algorithm/DataStructure</a><small>2</small></li>
+  
+    <li><a href="/categories/C-NET/">C#/.NET</a><small>1</small></li>
+  
+    <li><a href="/categories/C-NET/Unity3D-Blender/">Unity3D/Blender</a><small>1</small></li>
+  
+  </ul>
+</div>
+
+
+  
+</aside>
+    <div class="clearfix"></div>
+  </div>
+  <footer id="footer" class="inner"><div class="alignleft">
+  
+  &copy; 2019 Wang Jian
+  
+</div>
+<div class="clearfix"></div></footer>
+  <script src="/js/jquery-3.4.1.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+</body>
+</html>
