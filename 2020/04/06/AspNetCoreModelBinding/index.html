@@ -1,0 +1,136 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
+  
+  <title>Asp.Net Core 模型绑定 | Murmur</title>
+  <meta name="author" content="Wang Jian">
+  
+  <meta name="description" content="模型绑定到底用来做什么的
+Asp.Net Core中的模型绑定特指的是Controller与页面或者Api进行交互时，
+ Asp.Net中数据的流向
+读取数据：数据库=&amp;gt;EF Core=&amp;gt;Controller=&amp;gt;Pages
+写入数据:Pages=&amp;gt;Controller=&amp;gt">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="Asp.Net Core 模型绑定"/>
+  <meta property="og:site_name" content="Murmur"/>
+
+  
+    <meta property="og:image" content=""/>
+  
+
+  <link href="/favicon.png" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="Murmur" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css" integrity="sha384-zB1R0rpPzHqg7Kpt0Aljp8JPLqbXI3bhnPWROx27a9N0Ll6ZP/+DiW/UqRcLbRjq" crossorigin="anonymous">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js" integrity="sha384-y23I5Q6l+B6vatafAwxRu/0oK/79VlbSz7Q9aiSZUvyWYIYsd+qj+o24G5ZU2zJz" crossorigin="anonymous"></script> 
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js" integrity="sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI" crossorigin="anonymous"
+      onload="renderMathInElement(document.body);"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</head>
+
+
+<body>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><header id="header" class="inner"><div class="alignleft">
+  <h1><a href="/">Murmur</a></h1>
+  <h2><a href="/"></a></h2>
+</div>
+<nav id="main-nav" class="alignright">
+  <ul>
+    
+      <li><a href="/">Home</a></li>
+    
+      <li><a href="/archives">Archives</a></li>
+    
+  </ul>
+  <div class="clearfix"></div>
+</nav>
+<div class="clearfix"></div>
+</header>
+  <div id="content" class="inner">
+    <div id="main-col" class="alignleft"><div id="wrapper"><article id="post-AspNetCoreModelBinding" class="h-entry post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time class="dt-published" datetime="2020-04-06T08:01:07.000Z"><a href="/2020/04/06/AspNetCoreModelBinding/">2020-04-06</a></time>
+      
+      
+  
+    <h1 class="p-name title" itemprop="headline name">Asp.Net Core 模型绑定</h1>
+  
+
+    </header>
+    <div class="e-content entry" itemprop="articleBody">
+      
+        <h2 id="模型绑定到底用来做什么的"><a class="markdownIt-Anchor" href="#模型绑定到底用来做什么的"></a> 模型绑定到底用来做什么的</h2>
+<p><a href="http://Asp.Net" target="_blank" rel="noopener">Asp.Net</a> Core中的模型绑定特指的是Controller与页面或者Api进行交互时，</p>
+<h2 id="aspnet中数据的流向"><a class="markdownIt-Anchor" href="#aspnet中数据的流向"></a> Asp.Net中数据的流向</h2>
+<p>读取数据：数据库=&gt;EF Core=&gt;Controller=&gt;Pages<br />
+写入数据:Pages=&gt;Controller=&gt;EF Core=&gt;数据库</p>
+<h2 id="页面和controller怎么进行数据交互"><a class="markdownIt-Anchor" href="#页面和controller怎么进行数据交互"></a> 页面和Controller怎么进行数据交互</h2>
+<p>通过http请求（http request）来进行数据的交互<br />
+页面需要的数据类型与EF Core的数据类型可能不兼容，需要用到一个映射器（mapper）来进行转换<br />
+推荐是AutoMapper</p>
+<h2 id="controller和ef-core的交互"><a class="markdownIt-Anchor" href="#controller和ef-core的交互"></a> Controller和EF Core的交互</h2>
+<h2 id="ef-core和数据库的交互"><a class="markdownIt-Anchor" href="#ef-core和数据库的交互"></a> EF Core和数据库的交互</h2>
+<p><code>DbContext</code>类是ORM和数据库交互的重要的一个类。<code>DbContext</code>就是与数据库的一次对话，用来查询和保存实体的类。通过对<code>DbContext</code>进行操作，然后EF Core会将其转化为对应的SQL语句，进而与数据库进行交互。</p>
+<img src="/2020/04/06/AspNetCoreModelBinding/1.png" class="">
+<p>都需要继承<code>DbContext</code>类，图中的<code>DbSet&lt;T&gt;</code>类型的<code>Companies</code>和<code>Employees</code>属性就对应数据库中的两张表，然后在Controller中注入context便可以对数据进行操作。一般会将<code>DbContext</code>封装成一个服务（service）<br />
+EF Core中提供的有代码优先（Code First）和数据优先（Data First）两种模式</p>
+
+      
+    </div>
+    <footer>
+      
+        
+  
+  <div class="categories">
+    <a href="/categories/C-Net/">C#|.Net</a>
+  </div>
+
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+</div></div>
+    <aside id="sidebar" class="alignright">
+  
+<div class="widget tag">
+  <h3 class="title">分类</h3>
+  <ul class="entry">
+  
+    <li><a href="/categories/Algorithm-DataStructure/">Algorithm|DataStructure</a><small>6</small></li>
+  
+    <li><a href="/categories/C-Net/">C#|.Net</a><small>1</small></li>
+  
+    <li><a href="/categories/DirectX/">DirectX</a><small>3</small></li>
+  
+  </ul>
+</div>
+
+
+  
+</aside>
+    <div class="clearfix"></div>
+  </div>
+  <footer id="footer" class="inner"><div class="alignleft">
+  
+  &copy; 2020 Wang Jian
+  
+</div>
+<div class="clearfix"></div></footer>
+  <script src="/js/jquery-3.4.1.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+
+
+
+</body>
+</html>

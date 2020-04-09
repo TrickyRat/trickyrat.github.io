@@ -1,14 +1,16 @@
 <!DOCTYPE HTML>
 <html lang="zh-CN">
 <head>
-  <meta charset="utf-8">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
   
   <title>Leetcode-02 | Murmur</title>
   <meta name="author" content="Wang Jian">
   
-  <meta name="description" content="两数相加（Add Two Numbers）描述给出两个非空的链表用来表示两个非负的整数。其中，它们各自的位数是按照逆序的方式存储的，并且它们的每个节点只能存储一位数字。如果，我们将这两个数相加起来，则会返回一个新的链表来表示它们的和。
-您可以假设除了数字 0 之外，这两个数都不会以 0 开头。  
-">
+  <meta name="description" content="两数相加（Add Two Numbers）
+ 描述
+给出两个非空的链表用来表示两个非负的整数。其中，它们各自的位数是按照逆序的方式存储的，并且它们的每个节点只能存储一位数字。
+如果，我们将这两个数相加起来，则会返回一个新的链表来表示它们的和。
+您可以假设除了数字 0 之外，这两个数都不会以 0 开头">
   
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -23,14 +25,15 @@
   <link href="/favicon.png" rel="icon">
   <link rel="alternate" href="/atom.xml" title="Murmur" type="application/atom+xml">
   <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
-  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
-  
-
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css" integrity="sha384-zB1R0rpPzHqg7Kpt0Aljp8JPLqbXI3bhnPWROx27a9N0Ll6ZP/+DiW/UqRcLbRjq" crossorigin="anonymous">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js" integrity="sha384-y23I5Q6l+B6vatafAwxRu/0oK/79VlbSz7Q9aiSZUvyWYIYsd+qj+o24G5ZU2zJz" crossorigin="anonymous"></script> 
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js" integrity="sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI" crossorigin="anonymous"
+      onload="renderMathInElement(document.body);"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 </head>
 
 
 <body>
-  <header id="header" class="inner"><div class="alignleft">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><header id="header" class="inner"><div class="alignleft">
   <h1><a href="/">Murmur</a></h1>
   <h2><a href="/"></a></h2>
 </div>
@@ -64,42 +67,53 @@
     <div class="e-content entry" itemprop="articleBody">
       
         <img src="/2019/11/21/Leetcode-02/20191117.jpg" class="" title="Header Image">
-
-<h2 id="两数相加（Add-Two-Numbers）"><a href="#两数相加（Add-Two-Numbers）" class="headerlink" title="两数相加（Add Two Numbers）"></a>两数相加（Add Two Numbers）</h2><h3 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h3><p>给出两个非空的链表用来表示两个非负的整数。其中，它们各自的位数是按照逆序的方式存储的，并且它们的每个节点只能存储一位数字。<br>如果，我们将这两个数相加起来，则会返回一个新的链表来表示它们的和。</p>
-<p>您可以假设除了数字 0 之外，这两个数都不会以 0 开头。  </p>
-<h3 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h3><p>输入：(2 -&gt; 4 -&gt; 3) + (5 -&gt; 6 -&gt; 4)<br>输出：7 -&gt; 0 -&gt; 8<br>原因：342 + 465 = 807  </p>
-<h2 id="解题"><a href="#解题" class="headerlink" title="解题"></a>解题</h2><h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>其实和我们算加法一样原来计算就行了,如图所示  </p>
+<h2 id="两数相加add-two-numbers"><a class="markdownIt-Anchor" href="#两数相加add-two-numbers"></a> 两数相加（Add Two Numbers）</h2>
+<h3 id="描述"><a class="markdownIt-Anchor" href="#描述"></a> 描述</h3>
+<p>给出两个非空的链表用来表示两个非负的整数。其中，它们各自的位数是按照逆序的方式存储的，并且它们的每个节点只能存储一位数字。<br />
+如果，我们将这两个数相加起来，则会返回一个新的链表来表示它们的和。</p>
+<p>您可以假设除了数字 0 之外，这两个数都不会以 0 开头。</p>
+<h3 id="示例"><a class="markdownIt-Anchor" href="#示例"></a> 示例</h3>
+<p>输入：(2 -&gt; 4 -&gt; 3) + (5 -&gt; 6 -&gt; 4)<br />
+输出：7 -&gt; 0 -&gt; 8<br />
+原因：342 + 465 = 807</p>
+<h2 id="解题"><a class="markdownIt-Anchor" href="#解题"></a> 解题</h2>
+<h3 id="思路"><a class="markdownIt-Anchor" href="#思路"></a> 思路</h3>
+<p>其实和我们算加法一样原来计算就行了,如图所示</p>
 <img src="/2019/11/21/Leetcode-02/figure1.png" class="" title="Figure1">
-<p>只要把两条链表相应位置相加，记录是否有进位(通过sum/10来判断)，有则进位，添加到一条新的链表极结点就行了。值得注意的是，相加后有几种结果，分别是  </p>
+<p>只要把两条链表相应位置相加，记录是否有进位(通过sum/10来判断)，有则进位，添加到一条新的链表极结点就行了。值得注意的是，相加后有几种结果，分别是</p>
 <table>
 <thead>
 <tr>
-<th align="center">情况</th>
-<th align="center">结果</th>
+<th style="text-align:center">情况</th>
+<th style="text-align:center">结果</th>
 </tr>
 </thead>
-<tbody><tr>
-<td align="center">1+1</td>
-<td align="center">不进位</td>
+<tbody>
+<tr>
+<td style="text-align:center">1+1</td>
+<td style="text-align:center">不进位</td>
 </tr>
 <tr>
-<td align="center">12+8</td>
-<td align="center">进一次位</td>
+<td style="text-align:center">12+8</td>
+<td style="text-align:center">进一次位</td>
 </tr>
 <tr>
-<td align="center">9993+7</td>
-<td align="center">进多次位</td>
+<td style="text-align:center">9993+7</td>
+<td style="text-align:center">进多次位</td>
 </tr>
 <tr>
-<td align="center">0+12</td>
-<td align="center">有空的结点</td>
+<td style="text-align:center">0+12</td>
+<td style="text-align:center">有空的结点</td>
 </tr>
-</tbody></table>
-<p>对应结点的和为sum = x + y + carry，carry则是sum/10，对应的该位结点值为sum%10。  </p>
-<p>时间复杂度为O(max(m,n))，m和n分别是两条链表的长度；<br>空间复杂度为O(max(m,n))，需要新的一条链表，最多为max(m,n)+1(最高位有进位情况)。  </p>
-<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title">Solution</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> ListNode <span class="title">AddTwoNumbers</span>(<span class="params">ListNode l1, ListNode l2</span>)</span></span><br><span class="line"><span class="function"></span>    &#123;</span><br><span class="line">        <span class="comment">// 116ms</span></span><br><span class="line">        ListNode dummyHead = <span class="keyword">new</span> ListNode(<span class="number">0</span>);</span><br><span class="line">        <span class="keyword">if</span> (l1 == <span class="literal">null</span> &amp;&amp; l2 == <span class="literal">null</span>)</span><br><span class="line">            <span class="keyword">return</span> dummyHead;</span><br><span class="line">        <span class="keyword">int</span> carry = <span class="number">0</span>;</span><br><span class="line">        ListNode curr = dummyHead;</span><br><span class="line">        <span class="keyword">while</span> (l1 != <span class="literal">null</span> || l2 != <span class="literal">null</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">int</span> num1 = l1?.val ?? <span class="number">0</span>;</span><br><span class="line">            <span class="keyword">int</span> num2 = l2?.val ?? <span class="number">0</span>;</span><br><span class="line">            <span class="keyword">int</span> sum = num1 + num2 + carry;</span><br><span class="line">            curr.next = <span class="keyword">new</span> ListNode(sum % <span class="number">10</span>);</span><br><span class="line">            curr = curr.next;</span><br><span class="line">            carry = sum / <span class="number">10</span>;</span><br><span class="line">            l1 = l1?.next;</span><br><span class="line">            l2 = l2?.next;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (carry != <span class="number">0</span>)</span><br><span class="line">            curr.next = <span class="keyword">new</span> ListNode(carry);</span><br><span class="line">        <span class="keyword">return</span> dummyHead.next;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 148ms</span></span><br><span class="line">        <span class="comment">// ListNode r = new ListNode(-1);</span></span><br><span class="line">        <span class="comment">// ListNode n = r;</span></span><br><span class="line">        <span class="comment">// int carry = 0;</span></span><br><span class="line">        <span class="comment">// while (carry &gt; 0 || l1 != null || l2 != null)</span></span><br><span class="line">        <span class="comment">// &#123;</span></span><br><span class="line">        <span class="comment">//     int sum = (l1?.val ?? 0) + (l2?.val ?? 0) + carry;</span></span><br><span class="line">        <span class="comment">//     carry = sum / 10;</span></span><br><span class="line">        <span class="comment">//     n = n.next = new ListNode(sum % 10);</span></span><br><span class="line">        <span class="comment">//     l1 = l1?.next;</span></span><br><span class="line">        <span class="comment">//     l2 = l2?.next;</span></span><br><span class="line">        <span class="comment">// &#125;</span></span><br><span class="line">        <span class="comment">// return r.next;</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><p>截图来自<a href="https://leetcode-cn.com/add-two-numbers" target="_blank" rel="noopener">Leetcode-cn</a>.</p>
+</tbody>
+</table>
+<p>对应结点的和为sum = x + y + carry，carry则是sum/10，对应的该位结点值为sum%10。</p>
+<p>时间复杂度为O(max(m,n))，m和n分别是两条链表的长度；<br />
+空间复杂度为O(max(m,n))，需要新的一条链表，最多为max(m,n)+1(最高位有进位情况)。</p>
+<h3 id="代码"><a class="markdownIt-Anchor" href="#代码"></a> 代码</h3>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title">Solution</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> ListNode <span class="title">AddTwoNumbers</span>(<span class="params">ListNode l1, ListNode l2</span>)</span></span><br><span class="line"><span class="function"></span>    &#123;</span><br><span class="line">        <span class="comment">// 116ms</span></span><br><span class="line">        ListNode dummyHead = <span class="keyword">new</span> ListNode(<span class="number">0</span>);</span><br><span class="line">        <span class="keyword">if</span> (l1 == <span class="literal">null</span> &amp;&amp; l2 == <span class="literal">null</span>)</span><br><span class="line">            <span class="keyword">return</span> dummyHead;</span><br><span class="line">        <span class="keyword">int</span> carry = <span class="number">0</span>;</span><br><span class="line">        ListNode curr = dummyHead;</span><br><span class="line">        <span class="keyword">while</span> (l1 != <span class="literal">null</span> || l2 != <span class="literal">null</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">int</span> num1 = l1?.val ?? <span class="number">0</span>;</span><br><span class="line">            <span class="keyword">int</span> num2 = l2?.val ?? <span class="number">0</span>;</span><br><span class="line">            <span class="keyword">int</span> sum = num1 + num2 + carry;</span><br><span class="line">            curr.next = <span class="keyword">new</span> ListNode(sum % <span class="number">10</span>);</span><br><span class="line">            curr = curr.next;</span><br><span class="line">            carry = sum / <span class="number">10</span>;</span><br><span class="line">            l1 = l1?.next;</span><br><span class="line">            l2 = l2?.next;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (carry != <span class="number">0</span>)</span><br><span class="line">            curr.next = <span class="keyword">new</span> ListNode(carry);</span><br><span class="line">        <span class="keyword">return</span> dummyHead.next;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 148ms</span></span><br><span class="line">        <span class="comment">// ListNode r = new ListNode(-1);</span></span><br><span class="line">        <span class="comment">// ListNode n = r;</span></span><br><span class="line">        <span class="comment">// int carry = 0;</span></span><br><span class="line">        <span class="comment">// while (carry &gt; 0 || l1 != null || l2 != null)</span></span><br><span class="line">        <span class="comment">// &#123;</span></span><br><span class="line">        <span class="comment">//     int sum = (l1?.val ?? 0) + (l2?.val ?? 0) + carry;</span></span><br><span class="line">        <span class="comment">//     carry = sum / 10;</span></span><br><span class="line">        <span class="comment">//     n = n.next = new ListNode(sum % 10);</span></span><br><span class="line">        <span class="comment">//     l1 = l1?.next;</span></span><br><span class="line">        <span class="comment">//     l2 = l2?.next;</span></span><br><span class="line">        <span class="comment">// &#125;</span></span><br><span class="line">        <span class="comment">// return r.next;</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="引用"><a class="markdownIt-Anchor" href="#引用"></a> 引用</h2>
+<p>截图来自<a href="https://leetcode-cn.com/add-two-numbers" target="_blank" rel="noopener">Leetcode-cn</a>.</p>
 
       
     </div>
@@ -112,71 +126,23 @@
   </div>
 
         
-        
-  <div class="addthis addthis_toolbox addthis_default_style">
-    
-      <a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>
-    
-    
-      <a class="addthis_button_tweet"></a>
-    
-    
-      <a class="addthis_button_google_plusone" g:plusone:size="medium"></a>
-    
-    
-      <a class="addthis_button_pinterest_pinit" pi:pinit:layout="horizontal"></a>
-    
-    <a class="addthis_counter addthis_pill_style"></a>
-  </div>
-  <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js"></script>
-
       
       <div class="clearfix"></div>
     </footer>
   </div>
 </article>
-
-
-<section id="comment">
-  <h1 class="title">留言</h1>
-
-  
-      <div id="fb-root"></div>
-<script>
-  (function(d, s, id) {
-    var js, fjs = d.getElementsByTagName(s)[0];
-    if (d.getElementById(id)) return;
-    js = d.createElement(s); js.id = id;
-    js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=123456789012345";
-    fjs.parentNode.insertBefore(js, fjs);
-  }(document, 'script', 'facebook-jssdk'));
-</script>
-
-<div class="fb-comments" data-href="https://trickyrat.github.io/2019/11/21/Leetcode-02/index.html" data-num-posts="5" data-width="840" data-colorscheme="light"></div>
-      
-  
-</section>
-
 </div></div>
     <aside id="sidebar" class="alignright">
-  <div class="search">
-  <form action="//google.com/search" method="get" accept-charset="utf-8">
-    <input type="search" name="q" results="0" placeholder="搜索">
-    <input type="hidden" name="as_sitesearch" value="trickyrat.github.io">
-  </form>
-</div>
-
-
   
 <div class="widget tag">
   <h3 class="title">分类</h3>
   <ul class="entry">
   
-    <li><a href="/categories/Algorithm-DataStructure/">Algorithm|DataStructure</a><small>3</small></li>
+    <li><a href="/categories/Algorithm-DataStructure/">Algorithm|DataStructure</a><small>6</small></li>
   
-    <li><a href="/categories/C-NET/">C#|.NET</a><small>1</small></li>
+    <li><a href="/categories/C-Net/">C#|.Net</a><small>1</small></li>
   
-    <li><a href="/categories/C-NET/Unity3D-Blender/">Unity3D|Blender</a><small>1</small></li>
+    <li><a href="/categories/DirectX/">DirectX</a><small>3</small></li>
   
   </ul>
 </div>
@@ -188,24 +154,16 @@
   </div>
   <footer id="footer" class="inner"><div class="alignleft">
   
-  &copy; 2019 Wang Jian
+  &copy; 2020 Wang Jian
   
 </div>
 <div class="clearfix"></div></footer>
   <script src="/js/jquery-3.4.1.min.js"></script>
 <script src="/js/jquery.imagesloaded.min.js"></script>
-<script src="/js/gallery.js"></script>
+<script src="/js/gallery.js"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 
 
 
-
-<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
-<script src="/fancybox/jquery.fancybox.pack.js"></script>
-<script type="text/javascript">
-(function($){
-  $('.fancybox').fancybox();
-})(jQuery);
-</script>
 
 </body>
 </html>
