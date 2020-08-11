@@ -205,19 +205,25 @@
 <h3 id="描述"><a class="markdownIt-Anchor" href="#描述"></a> 描述</h3>
 <p>给定一个字符串，请你找出其中不含有重复字符的 最长子串 的长度。</p>
 <h3 id="示例"><a class="markdownIt-Anchor" href="#示例"></a> 示例</h3>
-<p>示例 1:</p>
+<h4 id="示例-1"><a class="markdownIt-Anchor" href="#示例-1"></a> 示例 1:</h4>
+<blockquote>
 <p>输入: “abcabcbb”<br />
 输出: 3<br />
 解释: 因为无重复字符的最长子串是 “abc”，所以其长度为 3。</p>
-<p>示例 2:</p>
+</blockquote>
+<h4 id="示例-2"><a class="markdownIt-Anchor" href="#示例-2"></a> 示例 2:</h4>
+<blockquote>
 <p>输入: “bbbbb”<br />
 输出: 1<br />
 解释: 因为无重复字符的最长子串是 “b”，所以其长度为 1。</p>
-<p>示例 3:</p>
+</blockquote>
+<h4 id="示例-3"><a class="markdownIt-Anchor" href="#示例-3"></a> 示例 3:</h4>
+<blockquote>
 <p>输入: “pwwkew”<br />
 输出: 3<br />
-解释: 因为无重复字符的最长子串是 “wke”，所以其长度为 3。<br />
-     请注意，你的答案必须是 子串 的长度，“pwke” 是一个子序列，不是子串。</p>
+解释: 因为无重复字符的最长子串是 “wke”，所以其长度为 3。</p>
+</blockquote>
+<p>请注意，你的答案必须是 子串 的长度，“pwke” 是一个子序列，不是子串。</p>
 <h3 id="思路"><a class="markdownIt-Anchor" href="#思路"></a> 思路</h3>
 <p>我们可以维护一个范围[i, j)的窗口来保存子串，使用HashSet/HashMap作为容器，对s进行遍历。如果窗口中不包含有s[j]，则将s[j]添加到窗口中并计数，反之，将s[i]从窗口中移除。也可以使用一个int数组来代替HashSet。</p>
 <table>

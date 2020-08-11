@@ -210,17 +210,23 @@
 <p>同时，在 IPv6 地址中，多余的 <code>0</code> 也是不被允许的。比如， <code>02001:0db8:85a3:0000:0000:8a2e:0370:7334</code> 是无效的。</p>
 <h3 id="示例"><a class="markdownIt-Anchor" href="#示例"></a> 示例</h3>
 <h4 id="示例-1"><a class="markdownIt-Anchor" href="#示例-1"></a> 示例 1</h4>
-<p>输入: “172.16.254.1”</p>
-<p>输出: “IPv4”</p>
-<p>解释: 这是一个有效的 IPv4 地址, 所以返回 “IPv4”。</p>
+<blockquote>
+<p>输入: “172.16.254.1”<br />
+输出: “IPv4”<br />
+解释: 这是一个有效的 IPv4 地址, 所以返回 “IPv4”。</p>
+</blockquote>
 <h4 id="示例-2"><a class="markdownIt-Anchor" href="#示例-2"></a> 示例 2</h4>
-<p>输入: “2001:0db8:85a3:0:0:8A2E:0370:7334”</p>
-<p>输出: “IPv6”</p>
-<p>解释: 这是一个有效的 IPv6 地址, 所以返回 “IPv6”。</p>
+<blockquote>
+<p>输入: “2001:0db8:85a3:0:0:8A2E:0370:7334”<br />
+输出: “IPv6”<br />
+解释: 这是一个有效的 IPv6 地址, 所以返回 “IPv6”。</p>
+</blockquote>
 <h4 id="示例-3"><a class="markdownIt-Anchor" href="#示例-3"></a> 示例 3</h4>
-<p>输入: “256.256.256.256”</p>
-<p>输出: “Neither”</p>
-<p>解释: 这个地址既不是 IPv4 也不是 IPv6 地址。</p>
+<blockquote>
+<p>输入: “256.256.256.256”<br />
+输出: “Neither”<br />
+解释: 这个地址既不是 IPv4 也不是 IPv6 地址。</p>
+</blockquote>
 <h3 id="分析过程"><a class="markdownIt-Anchor" href="#分析过程"></a> 分析过程：</h3>
 <p>看到题目，首先想到就是正则表达式，无论是IPv4还是IPv6其实都是分组后每一组的规则是相同的按照相应的规则进行匹配即可。<br />
 对于IPv4来说，其结构为<code>A.B.C.D</code>，由三个<code>.</code>和四个<code>0-255</code>数字组成，因此存在五种情景</p>
