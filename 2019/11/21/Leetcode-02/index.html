@@ -159,7 +159,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      489 字
+      694 字
     </span>
   
 
@@ -169,7 +169,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      6
+      10
        分钟
     </span>
   
@@ -209,15 +209,14 @@
 <p>输入：(2 -&gt; 4 -&gt; 3) + (5 -&gt; 6 -&gt; 4)<br />
 输出：7 -&gt; 0 -&gt; 8<br />
 原因：342 + 465 = 807</p>
-<h2 id="解题"><a class="markdownIt-Anchor" href="#解题"></a> 解题</h2>
-<h3 id="思路"><a class="markdownIt-Anchor" href="#思路"></a> 思路</h3>
-<p>其实和我们算加法一样原来计算就行了,如图所示<br />
+<h3 id="分析"><a class="markdownIt-Anchor" href="#分析"></a> 分析</h3>
+<p>其实和我们算加法一样，从个位开始计算就行了,如图所示<br />
 <img src="/img/bg/Leetcode-02/figure1.png" srcset="/img/loading.gif" alt="figure1" /><br />
-只要把两条链表相应位置相加，记录是否有进位(通过sum/10来判断)，有则进位，添加到一条新的链表极结点就行了。值得注意的是，相加后有几种结果，分别是</p>
+只要把两条链表相应位置相加，记录是否有进位(通过sum/10来判断)，有则进位，添加到一条新的链表结点就行了。值得注意的是，相加后有几种情景，分别是</p>
 <table>
 <thead>
 <tr>
-<th style="text-align:center">情况</th>
+<th style="text-align:center">情景</th>
 <th style="text-align:center">结果</th>
 </tr>
 </thead>
@@ -232,7 +231,7 @@
 </tr>
 <tr>
 <td style="text-align:center">9993+7</td>
-<td style="text-align:center">进多次位</td>
+<td style="text-align:center">连续进位</td>
 </tr>
 <tr>
 <td style="text-align:center">0+12</td>
@@ -240,15 +239,15 @@
 </tr>
 </tbody>
 </table>
-<p>对应结点的和为sum = x + y + carry，carry则是sum/10，对应的该位结点值为sum%10。</p>
-<p>时间复杂度为O(max(m,n))，m和n分别是两条链表的长度；<br />
-空间复杂度为O(max(m,n))，需要新的一条链表，最多为max(m,n)+1(最高位有进位情况)。</p>
+<p>对应结点的和sum = x + y + carry，carry则是sum/10，对应的该位结点值为sum%10。</p>
+<p>因为只需要遍历最长的链表，挨个结点相加，所以时间复杂度为O(max(m,n))，m和n分别是两条链表的长度；<br />
+需要新的一条链表来记录结果，最多为max(m,n)+1(最高位有进位情况)，所以空间复杂度为O(max(m,n))。</p>
 <h3 id="代码"><a class="markdownIt-Anchor" href="#代码"></a> 代码</h3>
+<p>C#代码</p>
 <div class="hljs"><pre><code class="hljs csharp"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span>
 &#123;
     <span class="hljs-function"><span class="hljs-keyword">public</span> ListNode <span class="hljs-title">AddTwoNumbers</span>(<span class="hljs-params">ListNode l1, ListNode l2</span>)</span>
     &#123;
-        <span class="hljs-comment">// 116ms</span>
         ListNode dummyHead = <span class="hljs-keyword">new</span> ListNode(<span class="hljs-number">0</span>);
         <span class="hljs-keyword">if</span> (l1 == <span class="hljs-literal">null</span> &amp;&amp; l2 == <span class="hljs-literal">null</span>)
             <span class="hljs-keyword">return</span> dummyHead;
@@ -270,22 +269,71 @@
             curr.next = <span class="hljs-keyword">new</span> ListNode(carry);
         &#125;
         <span class="hljs-keyword">return</span> dummyHead.next;
-
-        <span class="hljs-comment">// 148ms</span>
-        <span class="hljs-comment">// ListNode r = new ListNode(-1);</span>
-        <span class="hljs-comment">// ListNode n = r;</span>
-        <span class="hljs-comment">// int carry = 0;</span>
-        <span class="hljs-comment">// while (carry &gt; 0 || l1 != null || l2 != null)</span>
-        <span class="hljs-comment">// &#123;</span>
-        <span class="hljs-comment">//     int sum = (l1?.val ?? 0) + (l2?.val ?? 0) + carry;</span>
-        <span class="hljs-comment">//     carry = sum / 10;</span>
-        <span class="hljs-comment">//     n = n.next = new ListNode(sum % 10);</span>
-        <span class="hljs-comment">//     l1 = l1?.next;</span>
-        <span class="hljs-comment">//     l2 = l2?.next;</span>
-        <span class="hljs-comment">// &#125;</span>
-        <span class="hljs-comment">// return r.next;</span>
     &#125;
 &#125;</code></pre></div>
+<p>C++代码</p>
+<div class="hljs"><pre><code class="hljs cpp">class Solution &#123;
+public:
+    ListNode* addTwoNumbers(ListNode* l1, ListNode* l2) &#123;
+        ListNode preHead(0), *p = &amp;preHead;
+        int carry = 0;
+        while (l1 || l2 || carry) &#123;
+            int sum = (l1 ? l1-&gt;val : 0) + (l2 ? l2-&gt;val : 0) + carry;
+            carry = sum / 10;
+            p-&gt;next = new ListNode(sum % 10);
+            p = p-&gt;next;
+            l1 = l1 ? l1-&gt;next : l1;
+            l2 = l2 ? l2-&gt;next : l2;
+        &#125;
+        return preHead.next;
+    &#125;
+&#125;;</code></pre></div>
+<p>Python代码</p>
+<div class="hljs"><pre><code class="hljs python"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span>:</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">addTwoNumbers</span><span class="hljs-params">(self, l1: ListNode, l2: ListNode)</span> -&gt; ListNode:</span>
+        carry = <span class="hljs-number">0</span>
+        dummy_head = ListNode(<span class="hljs-literal">None</span>)
+        curr = dummy_head
+        <span class="hljs-keyword">while</span> l1 <span class="hljs-keyword">or</span> l2:
+            sum = <span class="hljs-number">0</span>;
+            <span class="hljs-keyword">if</span> l1:
+                sum += l1.val
+                l1 = l1.next
+            <span class="hljs-keyword">if</span> l2:
+                sum += l2.val
+                l2 = l2.next
+            sum +=  carry
+            curr.next = ListNode(sum%<span class="hljs-number">10</span>)
+            curr = curr.next
+            carry = sum//<span class="hljs-number">10</span>           
+        <span class="hljs-keyword">if</span> carry != <span class="hljs-number">0</span>:
+            curr.next = ListNode(carry)
+        <span class="hljs-keyword">return</span> dummy_head.next</code></pre></div>
+<p>Typescript 代码</p>
+<div class="hljs"><pre><code class="hljs typescript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">addTwoNumbers</span>(<span class="hljs-params">l1: ListNode | <span class="hljs-literal">null</span>, l2: ListNode | <span class="hljs-literal">null</span></span>): <span class="hljs-title">ListNode</span> | <span class="hljs-title">null</span> </span>&#123;
+    <span class="hljs-keyword">let</span> dummyHead: ListNode | <span class="hljs-literal">null</span> = <span class="hljs-keyword">new</span> ListNode();
+    <span class="hljs-keyword">let</span> carry: <span class="hljs-built_in">number</span> = <span class="hljs-number">0</span>;
+    <span class="hljs-keyword">let</span> curr: ListNode | <span class="hljs-literal">null</span> = dummyHead;
+    <span class="hljs-keyword">while</span> (l1 || l2) &#123;
+        <span class="hljs-keyword">let</span> sum: <span class="hljs-built_in">number</span> = <span class="hljs-number">0</span>;
+        <span class="hljs-keyword">if</span> (l1) &#123;
+            sum += l1.val;
+            l1 = l1.next;
+        &#125;
+        <span class="hljs-keyword">if</span> (l2) &#123;
+            sum += l2.val;
+            l2 = l2.next;
+        &#125;
+        sum += carry;
+        curr.next = <span class="hljs-keyword">new</span> ListNode(sum % <span class="hljs-number">10</span>);
+        curr = curr.next
+        carry = <span class="hljs-built_in">Math</span>.floor(sum / <span class="hljs-number">10</span>);
+    &#125;
+    <span class="hljs-keyword">if</span> (carry != <span class="hljs-number">0</span>) &#123;
+        curr.next = <span class="hljs-keyword">new</span> ListNode(carry);
+    &#125;
+    <span class="hljs-keyword">return</span> dummyHead.next;
+&#125;;</code></pre></div>
 <h2 id="引用"><a class="markdownIt-Anchor" href="#引用"></a> 引用</h2>
 <p>截图来自<a href="https://leetcode-cn.com/add-two-numbers" target="_blank" rel="noopener">Leetcode-cn</a>.</p>
 

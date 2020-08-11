@@ -135,7 +135,7 @@
 </nav>
 
     <div class="view intro-2" id="background" parallax=true
-         style="background: url('/img/default.png') no-repeat center center;
+         style="background: url('/img/bg/Leetcode-242/landscape.jpg') no-repeat center center;
            background-size: cover;">
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
@@ -216,8 +216,8 @@
 <h2 id="说明"><a class="markdownIt-Anchor" href="#说明"></a> 说明</h2>
 <p>异位词是指两个字符串所含相同字母的个数相同，你可以假设字符串只包含小写字母。</p>
 <h2 id="思路"><a class="markdownIt-Anchor" href="#思路"></a> 思路</h2>
-<p> 这道题其实就是在考察怎么统计字符出现的次数，我们可以使用数组或者hashmap来作为字母的容器，遍历s统计其中每个字母出现的次数，将其放到数组中存储，然后再遍历t，如果对应的有相应字母出现，便将数组中的值减一，直到最后数组中的元素应该都为零，否则便不是异位词。其实可以再优化一下，只需要一次遍历便可以将两个字符串统计完成。因为只考虑小写字母可以使用一个int[26]的数组作为容器，或者是Dictionary&lt;char, int&gt;的hashmap作为容器去统计。<br />
- 只需整个字符串即可，所以时间复杂度O(n)；只需一个固定大小的数组，所以空间复杂度为O(1)</p>
+<p>这道题其实就是在考察怎么统计字符出现的次数，我们可以使用数组或者hashmap来作为字母的容器，遍历s统计其中每个字母出现的次数，将其放到数组中存储，然后再遍历t，如果对应的有相应字母出现，便将数组中的值减一，直到最后数组中的元素应该都为零，否则便不是异位词。其实可以再优化一下，只需要一次遍历便可以将两个字符串统计完成。因为只考虑小写字母可以使用一个int[26]的数组作为容器，或者是Dictionary&lt;char, int&gt;的hashmap作为容器去统计。<br />
+只需整个字符串即可，所以时间复杂度O(n)；只需一个固定大小的数组，所以空间复杂度为O(1)</p>
 <h2 id="代码"><a class="markdownIt-Anchor" href="#代码"></a> 代码</h2>
 <div class="hljs"><pre><code class="hljs csharp"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">bool</span> <span class="hljs-title">IsAnagram</span>(<span class="hljs-params"><span class="hljs-keyword">string</span> s, <span class="hljs-keyword">string</span> t</span>)</span>
 &#123;

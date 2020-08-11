@@ -17,7 +17,7 @@
   <meta name="description" content="">
   <meta name="author" content="Wang Jian">
   <meta name="keywords" content="">
-  <title>归档 - Murmur</title>
+  <title>Murmur</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
 
@@ -38,7 +38,7 @@
 
 
 <body>
-  <!-- hexo-inject:begin --><!-- hexo-inject:end --><header style="height: 60vh;">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><header style="height: 100vh;">
     <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand"
@@ -139,6 +139,10 @@
           </div>
 
           
+            <div class="scroll-down-bar">
+              <i class="iconfont icon-arrowdown"></i>
+            </div>
+          
         </div>
       </div>
     </div>
@@ -148,55 +152,61 @@
     
       <div class="container nopadding-md">
         <div class="py-5" id="board"
-          >
+          style=margin-top:0>
           
           <div class="container">
             <div class="row">
               <div class="col-12 col-md-10 m-auto">
                 
 
-<div class="list-group">
-  <p class="h4">共计 11 篇文章</p>
-  <hr>
-  
+
+  <div class="row mx-auto index-card">
     
-      
-      <p class="h5">2020</p>
     
-    <a href="/2020/08/11/Leetcode-468/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">Leetcode-468 Valid IP Address</span>
-      <span style="float: right;">08-11</span>
-    </a>
-  
-    
-    <a href="/2020/04/09/Leetcode-25/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">Leetcode-25 Reverse Nodes in k-Group</span>
-      <span style="float: right;">04-09</span>
-    </a>
-  
-    
-    <a href="/2020/04/09/Leetcode-242/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">Leetcode-242 Valid Anagram</span>
-      <span style="float: right;">04-09</span>
-    </a>
-  
-    
-    <a href="/2020/04/09/Leetcode-20/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">Leetcode-20 	Valid Parentheses</span>
-      <span style="float: right;">04-09</span>
-    </a>
-  
-    
-    <a href="/2020/04/06/WhyNotApply3X3MatrixAsTransformMatrix/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">为什么不使用3x3矩阵来作为变换矩阵</span>
-      <span style="float: right;">04-06</span>
-    </a>
-  
-</div>
+    <div class="col-12 col-md-12 mx-auto index-info">
+      <a class="index-header" href="/2019/11/20/Leetcode-01/">Leetcode-01 Two Sum</a>
+
+      <a href="/2019/11/20/Leetcode-01/" class="index-excerpt">
+        
+        
+          
+        
+        <div> 两数之和（Two Sum）
+ 题目描述
+给定一个整数数组和一个目标值，找出数组中和为目标值的两个数，
+你可以假设每个输入只对应一个答案，且同样的元素不能被重复利用。
+ 示例
+给定数组 nums = [2, 7, 11, 15], target = 9，
+因为 nums[0] + nums[1] = 2 + 7 =9，
+所以返回结果 [0, 1]。
+ 分析过程：
+初看题目，首先想到两次循环暴力匹配</div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>&nbsp;2019-11-20
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/LeetCode/">LeetCode</a>
+            
+          </div>
+        
+        
+      </div>
+    </div>
+  </div>
+
+
 
   <nav aria-label="navigation">
     <span class="pagination" id="pagination">
-      <span class="page-number current">1</span><a class="page-number" href="/archives/2020/page/2/">2</a><a class="extend next" rel="next" href="/archives/2020/page/2/"><i class="iconfont icon-arrowright"></i></a>
+      <a class="extend prev" rel="prev" href="/page/2/"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span>
     </span>
   </nav>
   
@@ -297,7 +307,7 @@
     var typed = new Typed('#subtitle', {
       strings: [
         '  ',
-        "归档&nbsp;",
+        "Murmur..mur..mur..&nbsp;",
       ],
       cursorChar: "_",
       typeSpeed: 70,

@@ -159,7 +159,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      560 字
+      767 字
     </span>
   
 
@@ -169,7 +169,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      7
+      12
        分钟
     </span>
   
@@ -200,61 +200,139 @@
           <div class="post-content mx-auto" id="post">
             
             <article class="markdown-body">
-              <!-- /Leetcode-01/20191116.jpg -->
-<!--  -->
-<h2 id="两数之和two-sum"><a class="markdownIt-Anchor" href="#两数之和two-sum"></a> 两数之和（Two Sum）</h2>
-<h3 id="描述"><a class="markdownIt-Anchor" href="#描述"></a> 描述</h3>
-<p>Given an array of integers, return indices of the two numbers such that they add up to a specific target.<br />
-给定一个整数数组 nums 和一个目标值target，请你在该数组中找出和为目标值的那 两个 整数，并返回他们的数组下标。</p>
-<p>You may assume that each input would have exactly one solution, and you may not use the same element twice.<br />
-你可以假设每种输入只会对应一个答案。但是，你不能重复利用这个数组中同样的元素。</p>
+              <h2 id="两数之和two-sum"><a class="markdownIt-Anchor" href="#两数之和two-sum"></a> 两数之和（Two Sum）</h2>
+<h3 id="题目描述"><a class="markdownIt-Anchor" href="#题目描述"></a> 题目描述</h3>
+<p>给定一个整数数组和一个目标值，找出数组中和为目标值的两个数，<br />
+你可以假设每个输入只对应一个答案，且同样的元素不能被重复利用。</p>
 <h3 id="示例"><a class="markdownIt-Anchor" href="#示例"></a> 示例</h3>
-<p>Given nums = [2, 7, 11, 15], target = 9,<br />
-Because nums[0] + nums[1] = 2 + 7 = 9, return [0, 1].</p>
-<h2 id="解题"><a class="markdownIt-Anchor" href="#解题"></a> 解题</h2>
-<h3 id="思路"><a class="markdownIt-Anchor" href="#思路"></a> 思路</h3>
-<p>一开始想到就是使用暴力的方式直接循环两次，检测数组中是否有差值的元素。每个元素都需要遍历一次数组,每个元素都会耗时O(n),所以时间复杂度为O(n^2),空间复杂度O(1)。</p>
-<h3 id="代码"><a class="markdownIt-Anchor" href="#代码"></a> 代码</h3>
-<div class="hljs"><pre><code class="hljs csharp"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span>
-&#123;
-    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span>[] <span class="hljs-title">TwoSum</span>(<span class="hljs-params"><span class="hljs-keyword">int</span>[] nums, <span class="hljs-keyword">int</span> target</span>)</span>
-    &#123;
-        <span class="hljs-keyword">int</span> len = nums.Length;
-        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; len; i++)
-        &#123;
-            <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> j = <span class="hljs-number">0</span>; j &lt; len; j++)
-            &#123;
-                <span class="hljs-keyword">if</span> (nums[j] = target - nums[i])
-                    <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span>[] &#123; i, j &#125;;
-            &#125;
-        &#125;
-        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span>[];
-    &#125;
-&#125;</code></pre></div>
-<p>看到求两个数的和，那意思就是看看给定数组nums中，是否有一对值和为target的组合；这样其实就能很快速想到键值对的存在，所以可以考虑使用hashmap来尝试解题。将数组的元素x和target-x作为键值对，遍历整个数组，一边添加一边查询hashmap是否存在当前元素的目标值，如果存在，则将组合以数组形式返回，相反则没有。<br />
-时间复杂度只遍历一次数组，hashmap查询消耗O(1)时间，则总的时间复杂度为O(n)，<br />
-空间复杂度，因为使用了一个hashmap来存储键值对，需要额外的空间，最坏情况下需要消耗O(n)，所以空间复杂度为O(n)。</p>
-<div class="hljs"><pre><code class="hljs csharp"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span>
-&#123;
-    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span>[] <span class="hljs-title">TwoSum</span>(<span class="hljs-params"><span class="hljs-keyword">int</span>[] nums, <span class="hljs-keyword">int</span> target</span>)</span>
-    &#123;
+<p>给定数组 nums = [2, 7, 11, 15], target = 9，<br />
+因为 nums[0] + nums[1] = 2 + 7 =9，<br />
+所以返回结果 [0, 1]。</p>
+<h3 id="分析过程"><a class="markdownIt-Anchor" href="#分析过程"></a> 分析过程：</h3>
+<p>初看题目，首先想到两次循环暴力匹配。遍历数组nums查找是否有满足target-nums[i]的元素。显然时间复杂度为O(n^2)，空间复杂度为O(1)。​</p>
+<p>C# 代码</p>
+<div class="hljs"><pre><code class="hljs csharp"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> &#123;
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">int</span>[] <span class="hljs-title">TwoSum</span>(<span class="hljs-params"><span class="hljs-keyword">int</span>[] nums, <span class="hljs-keyword">int</span> target</span>)</span>
+    &#123;   
         <span class="hljs-keyword">int</span>[] res = <span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span>[<span class="hljs-number">2</span>];
-        Dictionary&lt;<span class="hljs-keyword">int</span>, <span class="hljs-keyword">int</span>&gt; map = <span class="hljs-keyword">new</span> Dictionary&lt;<span class="hljs-keyword">int</span>, <span class="hljs-keyword">int</span>&gt;();
         <span class="hljs-keyword">int</span> len = nums.Length;
         <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; len; i++)
         &#123;
-            <span class="hljs-keyword">if</span> (map.TryGetValue(target - nums[i], <span class="hljs-keyword">out</span> <span class="hljs-keyword">int</span> <span class="hljs-keyword">value</span>))
+            <span class="hljs-keyword">int</span> numberToFind = target - nums[i];
+            <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> j = i + <span class="hljs-number">1</span>; j &lt; len; j++)
             &#123;
-                res[<span class="hljs-number">1</span>] = i;
-                res[<span class="hljs-number">0</span>] = <span class="hljs-keyword">value</span>;
-                <span class="hljs-keyword">break</span>;
+                <span class="hljs-keyword">if</span>(nums[j] == numberToFind)
+                &#123;
+                    res[<span class="hljs-number">0</span>] = i;
+                    res[<span class="hljs-number">1</span>] = j;
+                    <span class="hljs-keyword">return</span> res;
+                &#125;
             &#125;
-            <span class="hljs-keyword">if</span>(!map.ContainsKey(nums[i]))
-                map[num[i]] = i;
         &#125;
         <span class="hljs-keyword">return</span> res;
     &#125;
 &#125;</code></pre></div>
+<p>其实细想，我们只需要遍历一次数组，将然后根据target-nums[i]为key在HashTable中查找是否有与之匹配的value，如果有则说明找到了目标，并将当前索引和hashtable中的value返回；没有则将当前值作为key，当前索引作为value存入hashtable中。<br />
+因为hashtable的查询平均时间复杂度为O(1)，所以我们的算法时间复杂度从O(n^2)降到O(n),因为引入了一个hashtable，并且最坏情况需要将整个数组的数据放入，所以空降复杂度为O(n)。</p>
+<p>C# 代码</p>
+<div class="hljs"><pre><code class="hljs csharp"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> &#123;
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span>[] <span class="hljs-title">TwoSum</span>(<span class="hljs-params"><span class="hljs-keyword">int</span>[] nums, <span class="hljs-keyword">int</span> target</span>)</span>
+    &#123;
+        <span class="hljs-keyword">int</span>[] res = <span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span>[<span class="hljs-number">2</span>];
+        Dictionary&lt;<span class="hljs-keyword">int</span>,<span class="hljs-keyword">int</span>&gt; dict = <span class="hljs-keyword">new</span> Dictionary&lt;<span class="hljs-keyword">int</span>, <span class="hljs-keyword">int</span>&gt;();
+        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; nums.Length; i++)
+        &#123;
+            <span class="hljs-keyword">if</span>(dic.TryGetValue(target - nums[i], <span class="hljs-keyword">out</span> <span class="hljs-keyword">int</span> <span class="hljs-keyword">value</span>)) <span class="hljs-comment">// O(1) </span>
+            &#123;
+              res[<span class="hljs-number">1</span>] = i;
+              res[<span class="hljs-number">0</span>] = <span class="hljs-keyword">value</span>;
+              <span class="hljs-keyword">break</span>;
+            &#125;
+            <span class="hljs-keyword">if</span> (!dic.ContainsKey(nums[i])) <span class="hljs-comment">// O(1)</span>
+            &#123;    
+                dic.Add(nums[i], i);
+            &#125;
+        &#125;       
+        <span class="hljs-keyword">return</span> res;
+    &#125;
+&#125;</code></pre></div>
+<p>C++ 代码</p>
+<div class="hljs"><pre><code class="hljs cpp"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> &#123;</span>
+<span class="hljs-keyword">public</span>:
+    <span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt; twoSum(<span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt;&amp; nums, <span class="hljs-keyword">int</span> target) &#123;
+        <span class="hljs-keyword">int</span> size = nums.size();
+        <span class="hljs-built_in">unordered_map</span>&lt;<span class="hljs-keyword">int</span>, <span class="hljs-keyword">int</span>&gt; hash;
+        <span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt; result;
+        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; size; i++) &#123;
+            <span class="hljs-keyword">int</span> numberToFind = target - nums[i];
+            <span class="hljs-keyword">if</span> (hash.contains(numberToFind)) &#123;
+                result.push_back(hash[numberToFind]);
+                result.push_back(i);
+                <span class="hljs-keyword">return</span> result;
+            &#125;
+            hash[nums[i]] = i;
+        &#125;
+        <span class="hljs-keyword">return</span> result;
+    &#125;
+&#125;;</code></pre></div>
+<p>Python 代码</p>
+<div class="hljs"><pre><code class="hljs python"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span>:</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">twoSum</span><span class="hljs-params">(self, nums, target)</span>:</span>
+        <span class="hljs-string">"""
+        :type nums: List[int]
+        :type target: int
+        :rtype: List[int]
+        """</span>
+        <span class="hljs-keyword">if</span> len(nums) &lt;= <span class="hljs-number">1</span>:
+            <span class="hljs-keyword">return</span> <span class="hljs-literal">False</span>
+        buff_dict = &#123;&#125;
+        <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> range(len(nums)):
+            <span class="hljs-keyword">if</span> nums[i] <span class="hljs-keyword">in</span> buff_dict:
+                <span class="hljs-keyword">return</span> [buff_dict[nums[i]], i]
+            <span class="hljs-keyword">else</span>:
+                buff_dict[target - nums[i]] = i</code></pre></div>
+<p>Rust 代码</p>
+<div class="hljs"><pre><code class="hljs rust"><span class="hljs-keyword">use</span> std::collections::HashMap;
+<span class="hljs-keyword">impl</span> Solution &#123;
+    <span class="hljs-keyword">pub</span> <span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">two_sum</span></span>(nums: <span class="hljs-built_in">Vec</span>&lt;<span class="hljs-built_in">i32</span>&gt;, target: <span class="hljs-built_in">i32</span>) -&gt; <span class="hljs-built_in">Vec</span>&lt;<span class="hljs-built_in">i32</span>&gt; &#123;
+        <span class="hljs-keyword">let</span> <span class="hljs-keyword">mut</span> hash = HashMap::new();
+        <span class="hljs-keyword">for</span> (index, value) <span class="hljs-keyword">in</span> nums.iter().enumerate() &#123;
+            <span class="hljs-keyword">let</span> number_to_find = target - *value;
+            <span class="hljs-keyword">if</span> hash.contains_key(&amp;number_to_find) &#123;
+                <span class="hljs-keyword">return</span> <span class="hljs-built_in">vec!</span>[hash[&amp;number_to_find], index <span class="hljs-keyword">as</span> <span class="hljs-built_in">i32</span>];
+            &#125;
+            hash.insert(value, index <span class="hljs-keyword">as</span> <span class="hljs-built_in">i32</span>);
+        &#125;
+        <span class="hljs-keyword">return</span> <span class="hljs-built_in">vec!</span>[];
+    &#125;
+&#125;</code></pre></div>
+<p>Javascript 代码</p>
+<div class="hljs"><pre><code class="hljs javascript"><span class="hljs-keyword">var</span> twoSum = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">nums, target</span>) </span>&#123;
+    <span class="hljs-keyword">var</span> hash = &#123;&#125;;
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt; nums.length; i++) &#123;
+        <span class="hljs-keyword">let</span> index = hash[target - nums[i]];
+        <span class="hljs-keyword">if</span> (<span class="hljs-keyword">typeof</span> index !== <span class="hljs-string">'undefined'</span>) &#123;
+            <span class="hljs-keyword">return</span> [index, i];
+        &#125;
+        hash[nums[i]] = i;
+    &#125;
+    <span class="hljs-keyword">return</span> <span class="hljs-literal">null</span>;
+&#125;;</code></pre></div>
+<p>Typescript 代码</p>
+<div class="hljs"><pre><code class="hljs typescript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">twoSum</span>(<span class="hljs-params">nums: <span class="hljs-built_in">number</span>[], target: <span class="hljs-built_in">number</span></span>): <span class="hljs-title">number</span>[] </span>&#123;
+    <span class="hljs-keyword">let</span> res: <span class="hljs-built_in">number</span>[] = [<span class="hljs-number">0</span>, <span class="hljs-number">0</span>];
+    <span class="hljs-keyword">let</span> dic: Map&lt;<span class="hljs-built_in">number</span>, <span class="hljs-built_in">number</span>&gt; = <span class="hljs-keyword">new</span> Map&lt;<span class="hljs-built_in">number</span>, <span class="hljs-built_in">number</span>&gt;();
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt; nums.length; i++) &#123;
+        <span class="hljs-keyword">if</span>(dic.has(target - nums[i])) &#123;
+            res[<span class="hljs-number">0</span>] = dic.get(target - nums[i]) <span class="hljs-keyword">as</span> <span class="hljs-built_in">number</span>;
+            res[<span class="hljs-number">1</span>] = i;
+            <span class="hljs-keyword">return</span> res;
+        &#125; <span class="hljs-keyword">else</span> &#123;
+            dic.set(nums[i], i);
+        &#125;
+    &#125;
+    <span class="hljs-keyword">return</span> [];
+&#125;;</code></pre></div>
 
             </article>
             <hr>
