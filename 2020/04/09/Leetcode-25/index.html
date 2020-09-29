@@ -159,7 +159,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      294 字
+      518 字
     </span>
   
 
@@ -169,7 +169,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      3
+      7
        分钟
     </span>
   
@@ -216,35 +216,70 @@ k 是一个正整数，它的值小于或等于链表的长度。<br />
 <li>你不能只是单纯的改变节点内部的值，而是需要实际进行节点交换。</li>
 </ul>
 <h2 id="思路"><a class="markdownIt-Anchor" href="#思路"></a> 思路</h2>
-<p>这道题可以拆分为两个部分</p>
-<ul>
-<li>考核怎么反转链表</li>
-<li>考核怎么递归</li>
-</ul>
-<p>第一点反转链表，反转链表应该属于基础操作，定义三个快慢指针便可以解决。<br />
-如</p>
+<p>这道题可以拆分为两个步骤，首先将链表根据k拆分成若干组，然后每一组开始反转链表。<br />
+分组很简单，比如，链表为<code>[1, 2, 3, 4, 5], k = 2</code><br />
+先拆分成<code>[1, 2]</code> 和 <code>[3, 4, 5]</code>，<br />
+然后递归去拆分<code>[3, 4, 5]</code>，最终得到<code>[1, 2], [3, 4], [5]</code> 三组数据。其实会发现每拆分一组时，就可以进行链表的反转，然后将反转后的链表在与之前的组合并便能得到结果。</p>
+<p>反转链表的代码模板</p>
+<div class="hljs"><pre><code class="hljs csharp">ListNode prev = <span class="hljs-literal">null</span>;
+ListNode curr = head;
+<span class="hljs-keyword">while</span>(curr != <span class="hljs-literal">null</span>)
+&#123;
+    ListNode next = curr.next;
+    curr.next = prev;
+    prev = curr;
+    curr = next;
+&#125;</code></pre></div>
+<p>这里的prev节点便是我们递归一次返回处理好的链表结点。时间复杂度为O(n)，空间复杂度为O(1)。</p>
 <h2 id="代码"><a class="markdownIt-Anchor" href="#代码"></a> 代码</h2>
+<p>C# 代码</p>
 <div class="hljs"><pre><code class="hljs csharp"><span class="hljs-function"><span class="hljs-keyword">public</span> ListNode <span class="hljs-title">ReverseKGroup</span>(<span class="hljs-params">ListNode head, <span class="hljs-keyword">int</span> k</span>)</span>
 &#123;
     ListNode tmp = head;
     <span class="hljs-keyword">int</span> count = <span class="hljs-number">0</span>;
-    <span class="hljs-keyword">while</span> (count &lt; k)
+    <span class="hljs-keyword">while</span> (count &lt; k) <span class="hljs-comment">// 分组</span>
     &#123;
         <span class="hljs-keyword">if</span>(tmp == <span class="hljs-literal">null</span>)
             <span class="hljs-keyword">return</span> head;
         tmp = tmp.next;
         count++;
-    &#125;
+    &#125; 
     ListNode prev = ReverseKGroup(tmp, k);
-    <span class="hljs-keyword">while</span> (count-- &gt; <span class="hljs-number">0</span>)
+    <span class="hljs-keyword">while</span> (count-- &gt; <span class="hljs-number">0</span>) <span class="hljs-comment">// 反转链表</span>
     &#123;
         ListNode next = head.next;
         head.next = prev;
         prev = head;
         head = next;
-    &#125;
+    &#125; 
     <span class="hljs-keyword">return</span> prev;
 &#125;</code></pre></div>
+<p>C++ 代码</p>
+<div class="hljs"><pre><code class="hljs cpp"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> &#123;</span>
+<span class="hljs-keyword">public</span>:
+    <span class="hljs-function">ListNode* <span class="hljs-title">reverseKGroup</span><span class="hljs-params">(ListNode* head, <span class="hljs-keyword">int</span> k)</span> </span>&#123;
+        <span class="hljs-keyword">if</span>(head == <span class="hljs-literal">nullptr</span>) &#123;
+            <span class="hljs-keyword">return</span> <span class="hljs-literal">nullptr</span>;
+        &#125; 
+        ListNode *tmp = head;
+        <span class="hljs-keyword">int</span> count = <span class="hljs-number">0</span>;
+        <span class="hljs-keyword">while</span>(count &lt; k) &#123;
+            <span class="hljs-keyword">if</span>(!tmp) &#123;
+                <span class="hljs-keyword">return</span> head;
+            &#125;
+            tmp = tmp-&gt;next;
+            count++;
+        &#125;
+        ListNode *prev = reverseKGroup(tmp, k);
+        <span class="hljs-keyword">while</span>(count-- &gt; <span class="hljs-number">0</span>) &#123;
+            ListNode* next = head-&gt;next;
+            head-&gt;next = prev;
+            prev = head;
+            head = next;
+        &#125;
+        <span class="hljs-keyword">return</span> prev;
+    &#125;
+&#125;;</code></pre></div>
 
             </article>
             <hr>
@@ -258,6 +293,13 @@ k 是一个正整数，它的值小于或等于链表的长度。<br />
                     
                   </div>
                 
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/Algorithm/">Algorithm</a>
+                    
+                  </div>
                 
               </div>
               
@@ -289,6 +331,38 @@ k 是一个正整数，它的值小于或等于链表的长度。<br />
               
             </div>
 
+            
+              <!-- Comments -->
+              <div class="comments" id="comments">
+                
+                
+  <div id="vcomments"></div>
+  <script type="text/javascript">
+    function loadValine() {
+      addScript('https://cdn.staticfile.org/valine/1.4.14/Valine.min.js', function () {
+        new Valine({
+          el: "#vcomments",
+          app_id: "I3uI6xdTHXxanTMi0daLUpDb-gzGzoHsz",
+          app_key: "Ec9djGTOMtnuxsIavrcIqQgr",
+          placeholder: "说点什么",
+          path: window.location.pathname,
+          avatar: "retro",
+          meta: ["nick","mail","link"],
+          pageSize: "10",
+          lang: "zh-CN",
+          highlight: true,
+          recordIP: false,
+          serverURLs: "https://i3ui6xdt.lc-cn-n1-shared.com",
+        });
+      });
+    }
+    createObserver(loadValine, 'vcomments');
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="https://valine.js.org" target="_blank" rel="nofollow noopener noopener">comments
+      powered by Valine.</a></noscript>
+
+
+              </div>
             
           </div>
         </div>

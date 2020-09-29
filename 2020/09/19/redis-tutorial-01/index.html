@@ -17,7 +17,7 @@
   <meta name="description" content="">
   <meta name="author" content="Wang Jian">
   <meta name="keywords" content="">
-  <title>Leetcode-20 	Valid Parentheses - Murmur</title>
+  <title>Redis Tutorial 01 - Murmur</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
 
@@ -135,7 +135,7 @@
 </nav>
 
     <div class="view intro-2" id="background" parallax=true
-         style="background: url('/img/bg/Leetcode-20/forest.jpg') no-repeat center center;
+         style="background: url('/img/default.png') no-repeat center center;
            background-size: cover;">
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
@@ -148,8 +148,8 @@
               
   <div class="mt-3 post-meta">
     <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-    <time datetime="2020-04-09 08:58">
-      2020年4月9日 早上
+    <time datetime="2020-09-19 16:32">
+      2020年9月19日 下午
     </time>
   </div>
 
@@ -159,7 +159,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      500 字
+      384 字
     </span>
   
 
@@ -200,104 +200,206 @@
           <div class="post-content mx-auto" id="post">
             
             <article class="markdown-body">
-              <h2 id="题目描述"><a class="markdownIt-Anchor" href="#题目描述"></a> 题目描述</h2>
-<p>给定一个只包括 ‘(’，’)’，’{’，’}’，’[’，’]’ 的字符串，判断字符串是否有效。</p>
-<p>有效字符串需满足：</p>
-<ul>
-<li>左括号必须用相同类型的右括号闭合。</li>
-<li>左括号必须以正确的顺序闭合。</li>
-</ul>
-<p>注意空字符串可被认为是有效字符串。</p>
-<h2 id="示例"><a class="markdownIt-Anchor" href="#示例"></a> 示例</h2>
-<p>示例1：</p>
-<blockquote>
-<p>输入: “()”<br />
-输出: true</p>
-</blockquote>
-<p>示例2：</p>
-<blockquote>
-<p>输入: “()[]{}”<br />
-输出: true</p>
-</blockquote>
-<p>示例3：</p>
-<blockquote>
-<p>输入: “(]”<br />
-输出: false</p>
-</blockquote>
-<p>示例4：</p>
-<blockquote>
-<p>输入: “([)]”<br />
-输出: false</p>
-</blockquote>
-<p>示例5：</p>
-<blockquote>
-<p>输入: “{[]}”<br />
-输出: true</p>
-</blockquote>
-<h2 id="思路"><a class="markdownIt-Anchor" href="#思路"></a> 思路</h2>
-<p>这道题主要考核怎么去匹配括号我们需要匹配的括号共三种<code>'()' '[]' '{}'</code>以及他们组合在一起的情况。如果元素是任意左括号就将其压入栈中，反之元素则为任意右括号，这个时候有几种情况</p>
+              <h1 id="redis命令"><a class="markdownIt-Anchor" href="#redis命令"></a> Redis命令</h1>
+<h2 id="创建和获取key"><a class="markdownIt-Anchor" href="#创建和获取key"></a> 创建和获取key</h2>
 <table>
 <thead>
 <tr>
-<th style="text-align:center">情况</th>
+<th style="text-align:center">命令</th>
 <th style="text-align:center">说明</th>
+<th style="text-align:center">例子</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td style="text-align:center">空栈</td>
-<td style="text-align:center">栈中无元素，此时却是右括号显然是没有匹配项的</td>
+<td style="text-align:center">set</td>
+<td style="text-align:center">创建一个名为key值为value键值对</td>
+<td style="text-align:center">set views 10</td>
 </tr>
 <tr>
-<td style="text-align:center">‘)’</td>
-<td style="text-align:center">栈顶不为’(’，给出的示例4告诉我们必须在左括号后立即有与之匹配的右括号才合法</td>
+<td style="text-align:center">get</td>
+<td style="text-align:center">获取名为key的值，存在返回值，不存在返回nil</td>
+<td style="text-align:center">get views</td>
 </tr>
 <tr>
-<td style="text-align:center">‘]’</td>
-<td style="text-align:center">同’)’</td>
+<td style="text-align:center">mset</td>
+<td style="text-align:center">一次创建多个键值对</td>
+<td style="text-align:center">mset key1 1 key2 2</td>
 </tr>
 <tr>
-<td style="text-align:center">‘}’</td>
-<td style="text-align:center">同’)’</td>
+<td style="text-align:center">mget</td>
+<td style="text-align:center">一次获取多个键的值</td>
+<td style="text-align:center">mget key1 key2</td>
 </tr>
 </tbody>
 </table>
-<p>剩下一种便是括号匹配，此时我们就需要将栈顶元素弹出，继续判断下一个元素。最后判断一下栈中是否还剩余有元素，如果有则有括号没有匹配上。<br />
- 只需遍历字符串所以时间复杂度为O(n)，需要一个栈，最坏情况需要将整个字符串放到栈中（如全是左括号）故空间复杂度也为O(n)</p>
-<h2 id="代码"><a class="markdownIt-Anchor" href="#代码"></a> 代码</h2>
-<div class="hljs"><pre><code class="hljs csharp"><span class="hljs-function"><span class="hljs-keyword">bool</span> <span class="hljs-title">IsValid</span>(<span class="hljs-params"><span class="hljs-keyword">string</span> s</span>)</span>
-&#123;
-    Stack&lt;<span class="hljs-keyword">char</span>&gt; stack = <span class="hljs-keyword">new</span> Stack&lt;<span class="hljs-keyword">char</span>&gt;();
-    <span class="hljs-keyword">foreach</span> (<span class="hljs-keyword">char</span> ch <span class="hljs-keyword">in</span> s)
-    &#123;
-        <span class="hljs-keyword">if</span>(ch == <span class="hljs-string">'('</span> || ch == <span class="hljs-string">'['</span> || ch == <span class="hljs-string">'&#123;'</span>)
-        &#123;
-            stack.Push(ch); <span class="hljs-comment">// 压栈</span>
-        &#125;
-        <span class="hljs-keyword">else</span>
-        &#123;
-            <span class="hljs-keyword">if</span>(stack.Count ==  <span class="hljs-number">0</span>) <span class="hljs-comment">// 空栈</span>
-            &#123;
-                <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;
-            &#125;
-            <span class="hljs-keyword">if</span>(ch == <span class="hljs-string">')'</span> &amp;&amp; stack.Peek() != <span class="hljs-string">'('</span>) <span class="hljs-comment">// ()不匹配</span>
-            &#123;
-                <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;
-            &#125;
-            <span class="hljs-keyword">if</span>(ch == <span class="hljs-string">']'</span> &amp;&amp; stack.Peek() != <span class="hljs-string">'['</span>)  <span class="hljs-comment">// []不匹配</span>
-            &#123;
-                <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;
-            &#125;
-            <span class="hljs-keyword">if</span>(ch == <span class="hljs-string">'&#125;'</span> &amp;&amp; stack.Peek() != <span class="hljs-string">'&#123;'</span>)  <span class="hljs-comment">// &#123;&#125;不匹配</span>
-            &#123;
-                <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;
-            &#125;
-            stack.Pop();  <span class="hljs-comment">// 匹配上了</span>
-        &#125;
-    &#125;
-    <span class="hljs-keyword">return</span> stack.Count == <span class="hljs-number">0</span>; <span class="hljs-comment">// 如果栈中还有元素则代表有多余的括号没有匹配上</span>
-&#125;</code></pre></div>
-
+<div class="hljs"><pre><code class="hljs bash">local_host:0&gt;<span class="hljs-built_in">set</span> views 10
+<span class="hljs-string">"OK"</span>
+local_host:0&gt;get views
+<span class="hljs-string">"10"</span>
+local_host:0&gt;mset key1 1 key2 2 key3 3
+<span class="hljs-string">"OK"</span>
+local_host:0&gt;mget key1 key2 key3
+ 1)  <span class="hljs-string">"1"</span>
+ 2)  <span class="hljs-string">"2"</span>
+ 3)  <span class="hljs-string">"3"</span></code></pre></div>
+<h2 id="自增自减"><a class="markdownIt-Anchor" href="#自增自减"></a> 自增自减</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">命令</th>
+<th style="text-align:center">说明</th>
+<th style="text-align:center">例子</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">incr</td>
+<td style="text-align:center">自增key的value</td>
+<td style="text-align:center">incr views</td>
+</tr>
+<tr>
+<td style="text-align:center">decr</td>
+<td style="text-align:center">自减key的value</td>
+<td style="text-align:center">decr views</td>
+</tr>
+</tbody>
+</table>
+<div class="hljs"><pre><code class="hljs bash">local_host:0&gt;incr views
+<span class="hljs-string">"11"</span>
+local_host:0&gt;decr views
+<span class="hljs-string">"10"</span></code></pre></div>
+<h2 id="带步进自增自减"><a class="markdownIt-Anchor" href="#带步进自增自减"></a> 带步进自增自减</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">命令</th>
+<th style="text-align:center">说明</th>
+<th style="text-align:center">例子</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">incrby</td>
+<td style="text-align:center">有步进增加key的value</td>
+<td style="text-align:center">incrby views 2</td>
+</tr>
+<tr>
+<td style="text-align:center">decrby</td>
+<td style="text-align:center">有步进减少key的value</td>
+<td style="text-align:center">decrby views 2</td>
+</tr>
+</tbody>
+</table>
+<div class="hljs"><pre><code class="hljs bash">local_host:0&gt;incrby views 2
+<span class="hljs-string">"12"</span>
+local_host:0&gt;decrby views 2
+<span class="hljs-string">"10"</span></code></pre></div>
+<h2 id="判断一个key是否存在"><a class="markdownIt-Anchor" href="#判断一个key是否存在"></a> 判断一个key是否存在</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">命令</th>
+<th style="text-align:center">说明</th>
+<th style="text-align:center">例子</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">exists</td>
+<td style="text-align:center">判断一个key是否存在</td>
+<td style="text-align:center">exists views</td>
+</tr>
+</tbody>
+</table>
+<div class="hljs"><pre><code class="hljs bash">local_host:0&gt;exists views
+<span class="hljs-string">"1"</span>
+local_host:0&gt;exists key4
+<span class="hljs-string">"0"</span></code></pre></div>
+<h2 id="设置key过期时间支持秒和毫秒"><a class="markdownIt-Anchor" href="#设置key过期时间支持秒和毫秒"></a> 设置key过期时间（支持秒和毫秒）</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">命令</th>
+<th style="text-align:center">说明</th>
+<th style="text-align:center">例子</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">expire</td>
+<td style="text-align:center">设置key过期时间</td>
+<td style="text-align:center">expire key2 5</td>
+</tr>
+</tbody>
+</table>
+<div class="hljs"><pre><code class="hljs bash">local_host:0&gt;expire key2 5
+<span class="hljs-string">"1"</span>
+local_host:0&gt;get key2 
+<span class="hljs-string">"2"</span>
+<span class="hljs-comment"># after 5 seconds</span>
+local_host:0&gt;get key2 
+null</code></pre></div>
+<h2 id="删除某个key"><a class="markdownIt-Anchor" href="#删除某个key"></a> 删除某个key</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">命令</th>
+<th style="text-align:center">说明</th>
+<th style="text-align:center">例子</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">del</td>
+<td style="text-align:center">删除某个key</td>
+<td style="text-align:center">del key3</td>
+</tr>
+</tbody>
+</table>
+<div class="hljs"><pre><code class="hljs bash">local_host:0&gt;del key3
+<span class="hljs-string">"1"</span></code></pre></div>
+<h2 id="查询value的类型"><a class="markdownIt-Anchor" href="#查询value的类型"></a> 查询value的类型</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">命令</th>
+<th style="text-align:center">说明</th>
+<th style="text-align:center">例子</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">type</td>
+<td style="text-align:center">查看key的存储的类型</td>
+<td style="text-align:center">type views</td>
+</tr>
+</tbody>
+</table>
+<div class="hljs"><pre><code class="hljs bash">local_host:0&gt;<span class="hljs-built_in">type</span> views
+<span class="hljs-string">"string"</span></code></pre></div>
+<h2 id="模式匹配查询key"><a class="markdownIt-Anchor" href="#模式匹配查询key"></a> 模式匹配查询key</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">命令</th>
+<th style="text-align:center">说明</th>
+<th style="text-align:center">例子</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">keys</td>
+<td style="text-align:center">根据模式匹配查询key</td>
+<td style="text-align:center">keys *</td>
+</tr>
+</tbody>
+</table>
+<div class="hljs"><pre><code class="hljs bash">local_host:0&gt;keys *
+ 1)  <span class="hljs-string">"key3"</span>
+ 2)  <span class="hljs-string">"views"</span>
+ 3)  <span class="hljs-string">"key2"</span>
+ 4)  <span class="hljs-string">"key1"</span></code></pre></div>
             </article>
             <hr>
             <div>
@@ -306,7 +408,7 @@
                   <div class="post-meta mr-3">
                     <i class="iconfont icon-category"></i>
                     
-                      <a class="hover-with-bg" href="/categories/LeetCode/">LeetCode</a>
+                      <a class="hover-with-bg" href="/categories/Redis/">Redis</a>
                     
                   </div>
                 
@@ -314,7 +416,7 @@
                   <div class="post-meta">
                     <i class="iconfont icon-tags"></i>
                     
-                      <a class="hover-with-bg" href="/tags/Algorithm/">Algorithm</a>
+                      <a class="hover-with-bg" href="/tags/Database/">Database</a>
                     
                   </div>
                 
@@ -327,9 +429,9 @@
                   <div class="post-prev col-6">
                     
                     
-                      <a href="/2020/04/09/Leetcode-242/">
+                      <a href="/2020/09/22/redis-tutorial-02/">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">Leetcode-242 Valid Anagram</span>
+                        <span class="hidden-mobile">Redis Tutorial 02</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -337,8 +439,8 @@
                   <div class="post-next col-6">
                     
                     
-                      <a href="/2020/04/06/WhyNotApply3X3MatrixAsTransformMatrix/">
-                        <span class="hidden-mobile">为什么不使用3x3矩阵来作为变换矩阵</span>
+                      <a href="/2020/08/11/Leetcode-468/">
+                        <span class="hidden-mobile">Leetcode-468 Valid IP Address</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
@@ -509,7 +611,7 @@
     var typed = new Typed('#subtitle', {
       strings: [
         '  ',
-        "Leetcode-20 	Valid Parentheses&nbsp;",
+        "Redis Tutorial 01&nbsp;",
       ],
       cursorChar: "_",
       typeSpeed: 70,
