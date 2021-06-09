@@ -1,14 +1,14 @@
+
+
 <!DOCTYPE html>
-<html lang="zh-CN">
-
-
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
 
 
 
 <head>
-  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
+  <meta charset="UTF-8">
   <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
-  <link rel="icon" type="image/png" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
   <meta name="viewport"
         content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -17,6 +17,7 @@
   <meta name="description" content="">
   <meta name="author" content="Wang Jian">
   <meta name="keywords" content="">
+  
   <title>Meow</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
@@ -24,21 +25,30 @@
 
 
 <!-- 主题依赖的图标库，不要自行修改 -->
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_yg9cfy8wd6.css">
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
 
 <link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_pjno9b9zyxs.css">
+
 
 <link  rel="stylesheet" href="/css/main.css" />
 
 <!-- 自定义样式保持在最底部 -->
 
 
-  <script  src="/js/utils.js" ></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
-</head>
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"trickyrat.github.io","root":"/","version":"1.8.11","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null},"tajs":null},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
 
 
 <body>
-  <!-- hexo-inject:begin --><!-- hexo-inject:end --><header style="height: 100vh;">
+  <header style="height: 100vh;">
     <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand"
@@ -116,8 +126,14 @@
         
         
           <li class="nav-item" id="search-btn">
-            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;&nbsp;<i
-                class="iconfont icon-search"></i>&nbsp;&nbsp;</a>
+            <a class="nav-link" target="_self" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
           </li>
         
       </ul>
@@ -125,13 +141,13 @@
   </div>
 </nav>
 
-    <div class="view intro-2" id="background" parallax=true
+    <div class="banner" id="banner" parallax=true
          style="background: url('/img/default.png') no-repeat center center;
            background-size: cover;">
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
-          <div class="container text-center white-text fadeInUp">
-            <span class="h2" id="subtitle">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="Meow...meow...meow..">
               
             </span>
 
@@ -150,7 +166,7 @@
 
   <main>
     
-      <div class="container nopadding-md">
+      <div class="container nopadding-x-md">
         <div class="py-5" id="board"
           style=margin-top:0>
           
@@ -163,57 +179,205 @@
   <div class="row mx-auto index-card">
     
     
-    <div class="col-12 col-md-12 mx-auto index-info">
-      <a class="index-header" href="/2020/09/22/redis-tutorial-02/">Redis Tutorial 02</a>
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2020/10/26/Rust%E7%AC%94%E8%AE%B0-03/" target="_self">
+          Rust笔记-02 函数
+        </a>
+      </h1>
 
-      <a href="/2020/09/22/redis-tutorial-02/" class="index-excerpt">
-        
-        
+      <p class="index-excerpt">
+        <a href="/2020/10/26/Rust%E7%AC%94%E8%AE%B0-03/" target="_self">
           
+          
+            
+          
+           Function
+Rust 和 C/C++一样必须有一个名称为 main 的函数，作为程序的入口，Rust 的函数使用关键字fn声明。Rust 约定使用snake case的代码风格命名 function 和 variable 的名称。
+例子
+123456fn main() &#123;    another_function();&#125;fn another_function() &#12
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
         
-        <div> Redis 类型
- Redis List
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-10-26 10:06" pubdate>
+              2020-10-26
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/%E7%AC%94%E8%AE%B0/">笔记</a>
+            
+              <a href="/categories/%E7%AC%94%E8%AE%B0/Rust/">Rust</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Language/">Language</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2020/10/23/Rust%E7%AC%94%E8%AE%B0-02/" target="_self">
+          Rust笔记-02 数据类型
+        </a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2020/10/23/Rust%E7%AC%94%E8%AE%B0-02/" target="_self">
+          
+          
+            
+          
+           Integer Number
+
+
+
+长度
+有符号
+无符号
+
+
+
+
+8-bit
+i8
+u8
+
+
+16-bit
+i16
+u16
+
+
+32-bit
+i32
+u32
+
+
+64-bit
+i64
+u64
+
+
+128-bit
+i128
+u128
+
+
+arch
+isize
+usize
+
+
+
+最后的 isize 和 usize 会自动基于当前运行平台如果是 64 位系统就是 i64 和 u64，32 位系统则是 
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-10-23 13:59" pubdate>
+              2020-10-23
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/%E7%AC%94%E8%AE%B0/">笔记</a>
+            
+              <a href="/categories/%E7%AC%94%E8%AE%B0/Rust/">Rust</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/">编程语言</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2020/10/20/Rust%E7%AC%94%E8%AE%B0-01/" target="_self">
+          Rust笔记-01 Get Started
+        </a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2020/10/20/Rust%E7%AC%94%E8%AE%B0-01/" target="_self">
+          
+          
+            
+          
+           Rust 的安装
+在Rust 官网下载相应平台的安装器进行安装。官方也有安装教程，这里就不赘述了。
+ cargo
+cargo是 Rust 的包管理器，可以用来创建项目、安装依赖、类型检测、编译、运行以及测试项目等功能。cargo是一个功能强大的工具。
+ 常用的 cargo 命令
 
 
 
 命令
 说明
-例子
+示例
 
 
 
 
-LPush
-在List头插入一个或多个元素
-LPush mylist hello
-
-
-RPush
-在List尾插入一个或多个元素
-RPush mylist world
-
-
-LPop
-获取List头的一个元素，并从List中一移除
-LPop mylist
-
-
-RPop
-获取List尾的一个元素，并从List中一移除
-RPop</div>
-      </a>
+cargo new
+创建项目，默认创建 binary 项目，添加参数可以选择 lib 
+        </a>
+      </p>
 
       <div class="index-btm post-metas">
         
           <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>&nbsp;2020-09-22
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-10-20 10:17" pubdate>
+              2020-10-20
+            </time>
           </div>
         
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-category"></i>
             
-              <a href="/categories/Redis/">Redis</a>
+              <a href="/categories/%E7%AC%94%E8%AE%B0/">笔记</a>
+            
+              <a href="/categories/%E7%AC%94%E8%AE%B0/Rust/">Rust</a>
             
           </div>
         
@@ -221,72 +385,61 @@ RPop</div>
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/Database/">Database</a>
+              <a href="/tags/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/">编程语言</a>
             
           </div>
         
       </div>
-    </div>
+    </article>
   </div>
 
   <div class="row mx-auto index-card">
     
     
-    <div class="col-12 col-md-12 mx-auto index-info">
-      <a class="index-header" href="/2020/09/19/redis-tutorial-01/">Redis Tutorial 01</a>
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2020/10/12/C%E8%AF%AD%E8%A8%80%E6%95%99%E7%A8%8B-05/" target="_self">
+          C语言教程-05 库
+        </a>
+      </h1>
 
-      <a href="/2020/09/19/redis-tutorial-01/" class="index-excerpt">
-        
-        
+      <p class="index-excerpt">
+        <a href="/2020/10/12/C%E8%AF%AD%E8%A8%80%E6%95%99%E7%A8%8B-05/" target="_self">
           
-        
-        <div> Redis命令
- 创建和获取key
+          
+            
+          
+           二分搜索（bsearch）
+C 标准库实现了二分搜索的函数 bsearch
+123void *bsearch(const void *key, const void *ptr,              size_t count, size_t size,              int (*comp)(const void *, const void *));
+ 参数
 
 
 
-命令
+参数名
 说明
-例子
 
 
-
-
-set
-创建一个名为key值为value键值对
-set views 10
-
-
-get
-获取名为key的值，存在返回值，不存在返回nil
-get views
-
-
-mset
-一次创建多个键值对
-mset key1 1 key2 2
-
-
-mget
-一次获取多个键的值
-mget key1 key2
-
-
-
-local_host:0&gt;</div>
-      </a>
+        </a>
+      </p>
 
       <div class="index-btm post-metas">
         
           <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>&nbsp;2020-09-19
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-10-12 14:45" pubdate>
+              2020-10-12
+            </time>
           </div>
         
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-category"></i>
             
-              <a href="/categories/Redis/">Redis</a>
+              <a href="/categories/%E6%95%99%E7%A8%8B/">教程</a>
+            
+              <a href="/categories/%E6%95%99%E7%A8%8B/C%E8%AF%AD%E8%A8%80/">C语言</a>
             
           </div>
         
@@ -294,44 +447,55 @@ local_host:0&gt;</div>
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/Database/">Database</a>
+              <a href="/tags/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/">编程语言</a>
             
           </div>
         
       </div>
-    </div>
+    </article>
   </div>
 
   <div class="row mx-auto index-card">
     
     
-    <div class="col-12 col-md-12 mx-auto index-info">
-      <a class="index-header" href="/2020/08/11/Leetcode-468/">Leetcode-468 Valid IP Address</a>
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2020/10/08/C%E8%AF%AD%E8%A8%80%E6%95%99%E7%A8%8B-04/" target="_self">
+          C语言教程-04 函数
+        </a>
+      </h1>
 
-      <a href="/2020/08/11/Leetcode-468/" class="index-excerpt">
-        
-        
+      <p class="index-excerpt">
+        <a href="/2020/10/08/C%E8%AF%AD%E8%A8%80%E6%95%99%E7%A8%8B-04/" target="_self">
           
-        
-        <div> 验证IP地址（Valid IP Address）
- 题目描述
-编写一个函数来验证输入的字符串是否是有效的 IPv4 或 IPv6 地址。
-IPv4 地址由十进制数和点来表示，每个地址包含4个十进制数，其范围为 0 - 255， 用(&quot;.&quot;)分割。比如，172.16.254.1；
-同时，IPv4 地址内的数不会以 0 开头。比如，地址 172.16.254.01 是不合法的。
-</div>
-      </a>
+          
+            
+          
+           函数
+
+return_type function_name(parameters) { function body }
+
+
+        </a>
+      </p>
 
       <div class="index-btm post-metas">
         
           <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>&nbsp;2020-08-11
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-10-08 13:28" pubdate>
+              2020-10-08
+            </time>
           </div>
         
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-category"></i>
             
-              <a href="/categories/LeetCode/">LeetCode</a>
+              <a href="/categories/%E6%95%99%E7%A8%8B/">教程</a>
+            
+              <a href="/categories/%E6%95%99%E7%A8%8B/C%E8%AF%AD%E8%A8%80/">C语言</a>
             
           </div>
         
@@ -339,47 +503,58 @@ IPv4 地址由十进制数和点来表示，每个地址包含4个十进制数�
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/Algorithm/">Algorithm</a>
+              <a href="/tags/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/">编程语言</a>
             
           </div>
         
       </div>
-    </div>
+    </article>
   </div>
 
   <div class="row mx-auto index-card">
     
     
-    <div class="col-12 col-md-12 mx-auto index-info">
-      <a class="index-header" href="/2020/04/09/Leetcode-25/">Leetcode-25 Reverse Nodes in k-Group</a>
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2020/10/08/C%E8%AF%AD%E8%A8%80%E6%95%99%E7%A8%8B-03/" target="_self">
+          C语言教程-03 指针
+        </a>
+      </h1>
 
-      <a href="/2020/04/09/Leetcode-25/" class="index-excerpt">
-        
-        
+      <p class="index-excerpt">
+        <a href="/2020/10/08/C%E8%AF%AD%E8%A8%80%E6%95%99%E7%A8%8B-03/" target="_self">
           
-        
-        <div> 题目描述
-给你一个链表，每 k 个节点一组进行翻转，请你返回翻转后的链表。
-k 是一个正整数，它的值小于或等于链表的长度。
-如果节点总数不是 k 的整数倍，那么请将最后剩余的节点保持原有顺序。
- 示例
-
-给你这个链表：1-&gt;2-&gt;3-&gt;4-&gt;5
-当 k = 2 时，应当返回: 2-&gt;1-&gt;4-&gt;3-&gt;5
-当 k = 3 时，应当返回: 3-&gt;</div>
-      </a>
+          
+            
+          
+           指针（Pointer）
+指针可谓是 C 语言的灵魂也是难点，
+指针也是一个内置类型
+从右向左，可以清晰分辨指针
+123int *ptr;  // 声明一个指向int类型的指针变量ptrint i = 0; // 声明一个int类型的变量i并赋值0ptr = &amp;i;  // 将i的内存地址（非物理内存地址）赋值给ptr
+ 指针分类
+ 指针的指针（Pointer to pointer）
+1i
+        </a>
+      </p>
 
       <div class="index-btm post-metas">
         
           <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>&nbsp;2020-04-09
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-10-08 13:27" pubdate>
+              2020-10-08
+            </time>
           </div>
         
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-category"></i>
             
-              <a href="/categories/LeetCode/">LeetCode</a>
+              <a href="/categories/%E6%95%99%E7%A8%8B/">教程</a>
+            
+              <a href="/categories/%E6%95%99%E7%A8%8B/C%E8%AF%AD%E8%A8%80/">C语言</a>
             
           </div>
         
@@ -387,55 +562,62 @@ k 是一个正整数，它的值小于或等于链表的长度。
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/Algorithm/">Algorithm</a>
+              <a href="/tags/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/">编程语言</a>
             
           </div>
         
       </div>
-    </div>
+    </article>
   </div>
 
   <div class="row mx-auto index-card">
     
     
-    <div class="col-12 col-md-12 mx-auto index-info">
-      <a class="index-header" href="/2020/04/09/Leetcode-242/">Leetcode-242 Valid Anagram</a>
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2020/09/30/C%E8%AF%AD%E8%A8%80%E6%95%99%E7%A8%8B-02/" target="_self">
+          C语言教程-02 变量
+        </a>
+      </h1>
 
-      <a href="/2020/04/09/Leetcode-242/" class="index-excerpt">
-        
-        
+      <p class="index-excerpt">
+        <a href="/2020/09/30/C%E8%AF%AD%E8%A8%80%E6%95%99%E7%A8%8B-02/" target="_self">
           
-        
-        <div> 题目描述
-给定两个字符串 s 和 t ，编写一个函数来判断 t 是否是 s 的字母异位词。
- 示例
-示例 1:
+          
+            
+          
+           变量
+ 声明变量
 
-输入: s = “anagram”, t = “nagaram”
-输出: true
+type_name variable_name;
 
-示例 2:
+C 语言的基础类型包括
+1234567short s;int a;long l;double d;float f;mytype t; // 自定义type变量
+ 声明变量并初始化
 
-输入: s = “rat”, t = “car”
-输出: false
+type_name variable_name = initial_value;
 
- 说明
-异位词是指两个字符串所含相同字母的个数相同，你可以假设字符串只包含小写字母。
- 思路
-这道题其实就是在考</div>
-      </a>
+12345short s = 22;int a = 1000
+        </a>
+      </p>
 
       <div class="index-btm post-metas">
         
           <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>&nbsp;2020-04-09
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-09-30 15:07" pubdate>
+              2020-09-30
+            </time>
           </div>
         
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-category"></i>
             
-              <a href="/categories/LeetCode/">LeetCode</a>
+              <a href="/categories/%E6%95%99%E7%A8%8B/">教程</a>
+            
+              <a href="/categories/%E6%95%99%E7%A8%8B/C%E8%AF%AD%E8%A8%80/">C语言</a>
             
           </div>
         
@@ -443,62 +625,70 @@ k 是一个正整数，它的值小于或等于链表的长度。
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/Algorithm/">Algorithm</a>
+              <a href="/tags/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/">编程语言</a>
             
           </div>
         
       </div>
-    </div>
+    </article>
   </div>
 
   <div class="row mx-auto index-card">
     
     
-    <div class="col-12 col-md-12 mx-auto index-info">
-      <a class="index-header" href="/2020/04/09/Leetcode-20/">Leetcode-20 	Valid Parentheses</a>
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2020/09/30/C%E8%AF%AD%E8%A8%80%E6%95%99%E7%A8%8B-01/" target="_self">
+          C语言教程-01 启航
+        </a>
+      </h1>
 
-      <a href="/2020/04/09/Leetcode-20/" class="index-excerpt">
-        
-        
+      <p class="index-excerpt">
+        <a href="/2020/09/30/C%E8%AF%AD%E8%A8%80%E6%95%99%E7%A8%8B-01/" target="_self">
           
-        
-        <div> 题目描述
-给定一个只包括 ‘(’，’)’，’{’，’}’，’[’，’]’ 的字符串，判断字符串是否有效。
-有效字符串需满足：
+          
+            
+          
+           开篇
+开一个坑，重新学习 C 语言，将自己学习过程记录下来。C 语言是一门面向过程的编程语言，是将问题拆分成若干个小问题分步骤进行解决编程模式。
+ 编译器
 
-左括号必须用相同类型的右括号闭合。
-左括号必须以正确的顺序闭合。
 
-注意空字符串可被认为是有效字符串。
- 示例
-示例1：
 
-输入: “()”
-输出: true
+编译器名称
+说明
+官网
 
-示例2：
 
-输入: “()[]{}”
-输出: true
 
-示例3：
 
-输入: “(]”
-输出: false
-</div>
-      </a>
+GCC
+GNU Compile Collection 缩写，是开源社区 GNU 开发维护的编译工具集
+https://www.gnu.org/software/gcc/
+
+
+Clang
+LLVM 苹果出的
+        </a>
+      </p>
 
       <div class="index-btm post-metas">
         
           <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>&nbsp;2020-04-09
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-09-30 14:10" pubdate>
+              2020-09-30
+            </time>
           </div>
         
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-category"></i>
             
-              <a href="/categories/LeetCode/">LeetCode</a>
+              <a href="/categories/%E6%95%99%E7%A8%8B/">教程</a>
+            
+              <a href="/categories/%E6%95%99%E7%A8%8B/C%E8%AF%AD%E8%A8%80/">C语言</a>
             
           </div>
         
@@ -506,115 +696,21 @@ k 是一个正整数，它的值小于或等于链表的长度。
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/Algorithm/">Algorithm</a>
+              <a href="/tags/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/">编程语言</a>
             
           </div>
         
       </div>
-    </div>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <div class="col-12 col-md-12 mx-auto index-info">
-      <a class="index-header" href="/2020/04/06/WhyNotApply3X3MatrixAsTransformMatrix/">为什么不使用3x3矩阵来作为变换矩阵</a>
-
-      <a href="/2020/04/06/WhyNotApply3X3MatrixAsTransformMatrix/" class="index-excerpt">
-        
-        
-          
-        
-        <div> 缩放（Scale）
- 假设有一个向量u(x,y,z)Tu(x,y,z)^Tu(x,y,z)T（一般使用列向量来表示一个向量）。我们将缩放操作定义为
-S(x,y,z)=S(sxx,syy,szz)S(x,y,z)=S(s_xx,s_yy,s_zz)
-S(x,y,z)=S(sx​x,sy​y,sz​z)
-现在需要证明一下缩放操作是一种线性变换。
-S(u+v)=(sx(ux+vx),sy(uy+vy)</div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>&nbsp;2020-04-06
-          </div>
-        
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-category"></i>
-            
-              <a href="/categories/DirectX/">DirectX</a>
-            
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/CG/">CG</a>
-            
-          </div>
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <div class="col-12 col-md-12 mx-auto index-info">
-      <a class="index-header" href="/2020/04/06/AspNetCoreModelBinding/">Asp.Net Core 模型绑定</a>
-
-      <a href="/2020/04/06/AspNetCoreModelBinding/" class="index-excerpt">
-        
-        
-          
-        
-        <div> 模型绑定到底用来做什么的
-简而言之，就是消费者和服务提供者沟通的中间载体。以Web Api为例，就是当Api消费者发送http请求数据时，与Controller交互时的一种数据载体，Asp.Net Core中是将请求的数据转换承一个键值对的数据结构存起来。根据键名称去和Asp.Net Core中的Model进行匹配并赋值。
- Asp.Net中数据的流向
-读取数据：数据库 =&gt; ORM框架 </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>&nbsp;2020-04-06
-          </div>
-        
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-category"></i>
-            
-              <a href="/categories/Asp-NetCore/">Asp.NetCore</a>
-            
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/Web/">Web</a>
-            
-          </div>
-        
-      </div>
-    </div>
+    </article>
   </div>
 
 
 
   <nav aria-label="navigation">
     <span class="pagination" id="pagination">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="iconfont icon-arrowright"></i></a>
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/#board">2</a><a class="page-number" href="/page/3/#board">3</a><a class="extend next" rel="next" href="/page/2/#board"><i class="iconfont icon-arrowright"></i></a>
     </span>
   </nav>
-  
-  <script>
-    for (ele of document.getElementById("pagination").getElementsByTagName("a")) {
-      ele.href += '#board';
-    }
-  </script>
 
 
 
@@ -624,16 +720,15 @@ S(u+v)=(sx(ux+vx),sy(uy+vy)</div>
         </div>
       </div>
     
-  </main>
 
-  
-    <a id="scroll-top-button" href="#" role="button">
-      <i class="iconfont icon-arrowup" aria-hidden="true"></i>
-    </a>
-  
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
 
-  
-    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
      aria-hidden="true">
   <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
     <div class="modal-content">
@@ -654,48 +749,66 @@ S(u+v)=(sx(ux+vx),sy(uy+vy)</div>
     </div>
   </div>
 </div>
-  
-
-  
-
-  
-
-  <footer class="mt-5">
-  <div class="text-center py-3">
-    <div>
-      <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a>
-      <i class="iconfont icon-love"></i>
-      <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener">
-        <span>Fluid</span></a>
-    </div>
     
 
     
+  </main>
 
-    
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
   </div>
+  
+
+  
+
+  
 </footer>
 
-<!-- SCRIPTS -->
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
 <script  src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js" ></script>
 <script  src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js" ></script>
-<script  src="/js/debouncer.js" ></script>
-<script  src="/js/main.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
 
 <!-- Plugins -->
 
 
   
-    <script  src="/js/lazyload.js" ></script>
+    <script  src="/js/img-lazyload.js" ></script>
   
 
 
 
+  
+
+
+
+
+
+
+
+
+
   <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
-  <script  src="/js/clipboard-use.js" ></script>
 
 
 
+  <script  src="/js/local-search.js" ></script>
 
 
 
@@ -704,35 +817,19 @@ S(u+v)=(sx(ux+vx),sy(uy+vy)</div>
 
   <script  src="https://cdn.staticfile.org/typed.js/2.0.11/typed.min.js" ></script>
   <script>
-    var typed = new Typed('#subtitle', {
-      strings: [
-        '  ',
-        "Meow...meow...meow..&nbsp;",
-      ],
-      cursorChar: "_",
-      typeSpeed: 70,
-      loop: false,
-    });
-    typed.stop();
-    $(document).ready(function () {
-      $(".typed-cursor").addClass("h2");
-      typed.start();
-    });
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
   </script>
 
 
 
 
 
-  <script  src="/js/local-search.js" ></script>
-  <script>
-    var path = "/local-search.xml";
-    var inputArea = document.querySelector("#local-search-input");
-    inputArea.onclick = function () {
-      searchFunc(path, 'local-search-input', 'local-search-result');
-      this.onclick = null
-    }
-  </script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 
 
 
@@ -743,16 +840,8 @@ S(u+v)=(sx(ux+vx),sy(uy+vy)</div>
 
 
 
-
-
-
-
-
-
-
-
-
-
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
 
 
 </body>

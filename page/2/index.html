@@ -1,14 +1,14 @@
+
+
 <!DOCTYPE html>
-<html lang="zh-CN">
-
-
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
 
 
 
 <head>
-  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
+  <meta charset="UTF-8">
   <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
-  <link rel="icon" type="image/png" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
   <meta name="viewport"
         content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -17,6 +17,7 @@
   <meta name="description" content="">
   <meta name="author" content="Wang Jian">
   <meta name="keywords" content="">
+  
   <title>Meow</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
@@ -24,21 +25,30 @@
 
 
 <!-- 主题依赖的图标库，不要自行修改 -->
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_yg9cfy8wd6.css">
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
 
 <link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_pjno9b9zyxs.css">
+
 
 <link  rel="stylesheet" href="/css/main.css" />
 
 <!-- 自定义样式保持在最底部 -->
 
 
-  <script  src="/js/utils.js" ></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
-</head>
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"trickyrat.github.io","root":"/","version":"1.8.11","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null},"tajs":null},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
 
 
 <body>
-  <!-- hexo-inject:begin --><!-- hexo-inject:end --><header style="height: 100vh;">
+  <header style="height: 100vh;">
     <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand"
@@ -116,8 +126,14 @@
         
         
           <li class="nav-item" id="search-btn">
-            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;&nbsp;<i
-                class="iconfont icon-search"></i>&nbsp;&nbsp;</a>
+            <a class="nav-link" target="_self" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
           </li>
         
       </ul>
@@ -125,13 +141,13 @@
   </div>
 </nav>
 
-    <div class="view intro-2" id="background" parallax=true
+    <div class="banner" id="banner" parallax=true
          style="background: url('/img/default.png') no-repeat center center;
            background-size: cover;">
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
-          <div class="container text-center white-text fadeInUp">
-            <span class="h2" id="subtitle">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="Meow...meow...meow..">
               
             </span>
 
@@ -150,7 +166,7 @@
 
   <main>
     
-      <div class="container nopadding-md">
+      <div class="container nopadding-x-md">
         <div class="py-5" id="board"
           style=margin-top:0>
           
@@ -163,30 +179,68 @@
   <div class="row mx-auto index-card">
     
     
-    <div class="col-12 col-md-12 mx-auto index-info">
-      <a class="index-header" href="/2020/03/28/DirectX123D-02/">DirectX12 3D（二）</a>
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2020/09/22/Redis%E7%AC%94%E8%AE%B0-02/" target="_self">
+          Redis笔记-02
+        </a>
+      </h1>
 
-      <a href="/2020/03/28/DirectX123D-02/" class="index-excerpt">
-        
-        
+      <p class="index-excerpt">
+        <a href="/2020/09/22/Redis%E7%AC%94%E8%AE%B0-02/" target="_self">
           
-        
-        <div> DirectX 12的初始化
-DirectX 12的初始化过程ID3d12CommandList
-</div>
-      </a>
+          
+            
+          
+           Redis 类型
+ Redis List
+
+
+
+命令
+说明
+例子
+
+
+
+
+LPush
+在 List 头插入一个或多个元素
+LPush mylist hello
+
+
+RPush
+在 List 尾插入一个或多个元素
+RPush mylist world
+
+
+LPop
+获取 List 头的一个元素，并从 List 中一移除
+LPop mylist
+
+
+RPop
+获取 List 尾的一个元素，并从 Li
+        </a>
+      </p>
 
       <div class="index-btm post-metas">
         
           <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>&nbsp;2020-03-28
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-09-22 10:41" pubdate>
+              2020-09-22
+            </time>
           </div>
         
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-category"></i>
             
-              <a href="/categories/DirectX/">DirectX</a>
+              <a href="/categories/%E7%AC%94%E8%AE%B0/">笔记</a>
+            
+              <a href="/categories/%E7%AC%94%E8%AE%B0/Redis/">Redis</a>
             
           </div>
         
@@ -194,42 +248,84 @@ DirectX 12的初始化过程ID3d12CommandList
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/CG/">CG</a>
+              <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a>
             
           </div>
         
       </div>
-    </div>
+    </article>
   </div>
 
   <div class="row mx-auto index-card">
     
     
-    <div class="col-12 col-md-12 mx-auto index-info">
-      <a class="index-header" href="/2020/03/27/DirectX123D-01/">DirectX12 3D（一）</a>
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2020/09/19/Redis%E7%AC%94%E8%AE%B0-01/" target="_self">
+          Redis笔记-01
+        </a>
+      </h1>
 
-      <a href="/2020/03/27/DirectX123D-01/" class="index-excerpt">
-        
-        
+      <p class="index-excerpt">
+        <a href="/2020/09/19/Redis%E7%AC%94%E8%AE%B0-01/" target="_self">
           
-        
-        <div> 系列介绍
-最近在阅读《DirectX 12 3D游戏开发实战》这本书，也就是《Introduction to 3D Game Programming with DirectX 12》的国内翻译版本，然后决定写一个DirectX知识点系列。该系列主要讲基于DirectX12制作3D游戏，内容大概是从基础的3D数学讲起,然后递进直到做出一个游戏demo，并运用上书籍上所有知识点。
- 正文
-该书前三章</div>
-      </a>
+          
+            
+          
+           Redis 命令
+ 创建和获取 key
+
+
+
+命令
+说明
+例子
+
+
+
+
+set
+创建一个名为 key 值为 value 键值对
+set views 10
+
+
+get
+获取名为 key 的值，存在返回值，不存在返回 nil
+get views
+
+
+mset
+一次创建多个键值对
+mset key1 1 key2 2
+
+
+mget
+一次获取多个键的值
+mget key1 key2
+
+
+
+1234567
+        </a>
+      </p>
 
       <div class="index-btm post-metas">
         
           <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>&nbsp;2020-03-27
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-09-19 16:32" pubdate>
+              2020-09-19
+            </time>
           </div>
         
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-category"></i>
             
-              <a href="/categories/DirectX/">DirectX</a>
+              <a href="/categories/%E7%AC%94%E8%AE%B0/">笔记</a>
+            
+              <a href="/categories/%E7%AC%94%E8%AE%B0/Redis/">Redis</a>
             
           </div>
         
@@ -237,152 +333,55 @@ DirectX 12的初始化过程ID3d12CommandList
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/CG/">CG</a>
+              <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a>
             
           </div>
         
       </div>
-    </div>
+    </article>
   </div>
 
   <div class="row mx-auto index-card">
     
     
-    <div class="col-12 col-md-12 mx-auto index-info">
-      <a class="index-header" href="/2019/11/22/Leetcode-03/">Leetcode-03 Longest Substring Without Repeating Characters</a>
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2020/08/11/Leetcode-468/" target="_self">
+          Leetcode-468 Valid IP Address
+        </a>
+      </h1>
 
-      <a href="/2019/11/22/Leetcode-03/" class="index-excerpt">
-        
-        
+      <p class="index-excerpt">
+        <a href="/2020/08/11/Leetcode-468/" target="_self">
           
-        
-        <div> 无重复字符的最长子串（Longest Substring Without Repeating Characters）
- 目录
- 描述
-给定一个字符串，请你找出其中不含有重复字符的 最长子串 的长度。
- 示例
- 示例 1:
-
-输入: “abcabcbb”
-输出: 3
-解释: 因为无重复字符的最长子串是 “abc”，所以其长度为 3。
-
- 示例 2:
-
-输入: “bbbbb”
-输出: 1
-解释: 因</div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>&nbsp;2019-11-22
-          </div>
-        
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-category"></i>
-            
-              <a href="/categories/LeetCode/">LeetCode</a>
-            
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/Algorithm/">Algorithm</a>
-            
-          </div>
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <div class="col-12 col-md-12 mx-auto index-info">
-      <a class="index-header" href="/2019/11/21/Leetcode-02/">Leetcode-02 Add Two Numbers</a>
-
-      <a href="/2019/11/21/Leetcode-02/" class="index-excerpt">
-        
-        
           
-        
-        <div> 两数相加（Add Two Numbers）
- 描述
-给出两个非空的链表用来表示两个非负的整数。其中，它们各自的位数是按照逆序的方式存储的，并且它们的每个节点只能存储一位数字。
-如果，我们将这两个数相加起来，则会返回一个新的链表来表示它们的和。
-您可以假设除了数字 0 之外，这两个数都不会以 0 开头。
- 示例
-
-输入：(2 -&gt; 4 -&gt; 3) + (5 -&gt; 6 -&gt; </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>&nbsp;2019-11-21
-          </div>
-        
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-category"></i>
             
-              <a href="/categories/LeetCode/">LeetCode</a>
-            
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/Algorithm/">Algorithm</a>
-            
-          </div>
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <div class="col-12 col-md-12 mx-auto index-info">
-      <a class="index-header" href="/2019/11/20/Leetcode-01/">Leetcode-01 Two Sum</a>
-
-      <a href="/2019/11/20/Leetcode-01/" class="index-excerpt">
-        
-        
           
-        
-        <div> 两数之和（Two Sum）
+           验证 IP 地址（Valid IP Address）
  题目描述
-给定一个整数数组和一个目标值，找出数组中和为目标值的两个数，
-你可以假设每个输入只对应一个答案，且同样的元素不能被重复利用。
- 示例
-
-给定数组 nums = [2, 7, 11, 15], target = 9，
-因为 nums[0] + nums[1] = 2 + 7 =9，
-所以返回结果 [0, 1]。
-
- 分析过程：
-初看题目，首先想到两次循环暴力</div>
-      </a>
+编写一个函数来验证输入的字符串是否是有效的 IPv4 或  IPv6 地址。
+IPv4  地址由十进制数和点来表示，每个地址包含 4 个十进制数，其范围为  0 - 255，  用(&quot;.&quot;)分割。比如，172.16.254.1；
+同时，IPv4 地址内的数不会以 0 开头。比如，地址  172.16.254.0
+        </a>
+      </p>
 
       <div class="index-btm post-metas">
         
           <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>&nbsp;2019-11-20
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-08-11 00:25" pubdate>
+              2020-08-11
+            </time>
           </div>
         
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-category"></i>
             
-              <a href="/categories/LeetCode/">LeetCode</a>
+              <a href="/categories/%E7%AE%97%E6%B3%95/">算法</a>
+            
+              <a href="/categories/%E7%AE%97%E6%B3%95/LeetCode/">LeetCode</a>
             
           </div>
         
@@ -390,27 +389,336 @@ DirectX 12的初始化过程ID3d12CommandList
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/Algorithm/">Algorithm</a>
+              <a href="/tags/%E7%AE%97%E6%B3%95/">算法</a>
             
           </div>
         
       </div>
-    </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2020/04/09/Leetcode-25/" target="_self">
+          Leetcode-25 Reverse Nodes in k-Group
+        </a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2020/04/09/Leetcode-25/" target="_self">
+          
+          
+            
+          
+           题目描述
+给你一个链表，每  k  个节点一组进行翻转，请你返回翻转后的链表。
+k  是一个正整数，它的值小于或等于链表的长度。
+如果节点总数不是  k  的整数倍，那么请将最后剩余的节点保持原有顺序。
+ 示例
+
+给你这个链表：1-&gt;2-&gt;3-&gt;4-&gt;5
+当  k = 2 时，应当返回: 2-&gt;1-&gt;4-&gt;3-&gt;5
+当  k = 3 时，应当返回:
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-04-09 13:34" pubdate>
+              2020-04-09
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/%E7%AE%97%E6%B3%95/">算法</a>
+            
+              <a href="/categories/%E7%AE%97%E6%B3%95/LeetCode/">LeetCode</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E7%AE%97%E6%B3%95/">算法</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2020/04/09/Leetcode-242/" target="_self">
+          Leetcode-242 Valid Anagram
+        </a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2020/04/09/Leetcode-242/" target="_self">
+          
+          
+            
+          
+           题目描述
+给定两个字符串 s 和 t ，编写一个函数来判断 t 是否是 s 的字母异位词。
+ 示例
+示例  1:
+
+输入: s = “anagram”, t = “nagaram”
+输出: true
+
+示例 2:
+
+输入: s = “rat”, t = “car”
+输出: false
+
+ 说明
+异位词是指两个字符串所含相同字母的个数相同，你可以假设字符串只包含小写字母。
+ 思路
+这道题其实就是在
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-04-09 12:52" pubdate>
+              2020-04-09
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/%E7%AE%97%E6%B3%95/">算法</a>
+            
+              <a href="/categories/%E7%AE%97%E6%B3%95/LeetCode/">LeetCode</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E7%AE%97%E6%B3%95/">算法</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2020/04/09/Leetcode-20/" target="_self">
+          Leetcode-20 	Valid Parentheses
+        </a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2020/04/09/Leetcode-20/" target="_self">
+          
+          
+            
+          
+           题目描述
+给定一个只包括 ‘(’，’)’，’{’，’}’，’[’，’]’  的字符串，判断字符串是否有效。
+有效字符串需满足：
+
+左括号必须用相同类型的右括号闭合。
+左括号必须以正确的顺序闭合。
+
+注意空字符串可被认为是有效字符串。
+ 示例
+示例 1：
+
+输入: “()”
+输出: true
+
+示例 2：
+
+输入: “()[]{}”
+输出: true
+
+示例 3：
+
+输入: “(]”
+输出: fa
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-04-09 08:58" pubdate>
+              2020-04-09
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/%E7%AE%97%E6%B3%95/">算法</a>
+            
+              <a href="/categories/%E7%AE%97%E6%B3%95/LeetCode/">LeetCode</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E7%AE%97%E6%B3%95/">算法</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2020/04/06/DirectX12%E7%AC%94%E8%AE%B0-03/" target="_self">
+          DirectX12笔记-03
+        </a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2020/04/06/DirectX12%E7%AC%94%E8%AE%B0-03/" target="_self">
+          
+          
+            
+          
+           为什么不使用 3x3 矩阵来作为变换矩阵
+ 缩放（Scale）
+假设有一个向量u(x,y,z)Tu(x,y,z)^Tu(x,y,z)T（一般使用列向量来表示一个向量）。我们将缩放操作定义为
+S(x,y,z)=S(sxx,syy,szz)S(x,y,z)=S(s_xx,s_yy,s_zz)
+S(x,y,z)=S(sx​x,sy​y,sz​z)
+现在需要证明一下缩放操作是一种线性变换。
+S(u+v)
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-04-06 16:56" pubdate>
+              2020-04-06
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/%E7%AC%94%E8%AE%B0/">笔记</a>
+            
+              <a href="/categories/%E7%AC%94%E8%AE%B0/DirectX/">DirectX</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/CG/">CG</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2020/04/06/ASP.NET%20CORE%E7%AC%94%E8%AE%B0-01/" target="_self">
+          ASP.NET CORE笔记 模型绑定
+        </a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2020/04/06/ASP.NET%20CORE%E7%AC%94%E8%AE%B0-01/" target="_self">
+          
+          
+            
+          
+           模型绑定到底用来做什么的
+简而言之，就是消费者和服务提供者沟通的中间载体。以Web Api为例，就是当 Api 消费者发送 http 请求数据时，与 Controller 交互时的一种数据载体，Asp.Net Core中是将请求的数据转换承一个键值对的数据结构存起来。根据键名称去和Asp.Net Core中的 Model 进行匹配并赋值。
+ ASP.NET CORE 中数据的流向
+读取数据：数据
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-04-06 16:01" pubdate>
+              2020-04-06
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/Web/">Web</a>
+            
+              <a href="/categories/Web/ASP-NET-CORE/">ASP.NET CORE</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Web/">Web</a>
+            
+          </div>
+        
+      </div>
+    </article>
   </div>
 
 
 
   <nav aria-label="navigation">
     <span class="pagination" id="pagination">
-      <a class="extend prev" rel="prev" href="/"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
+      <a class="extend prev" rel="prev" href="/"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/#board">3</a><a class="extend next" rel="next" href="/page/3/#board"><i class="iconfont icon-arrowright"></i></a>
     </span>
   </nav>
-  
-  <script>
-    for (ele of document.getElementById("pagination").getElementsByTagName("a")) {
-      ele.href += '#board';
-    }
-  </script>
 
 
 
@@ -420,16 +728,15 @@ DirectX 12的初始化过程ID3d12CommandList
         </div>
       </div>
     
-  </main>
 
-  
-    <a id="scroll-top-button" href="#" role="button">
-      <i class="iconfont icon-arrowup" aria-hidden="true"></i>
-    </a>
-  
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
 
-  
-    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
      aria-hidden="true">
   <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
     <div class="modal-content">
@@ -450,48 +757,66 @@ DirectX 12的初始化过程ID3d12CommandList
     </div>
   </div>
 </div>
-  
-
-  
-
-  
-
-  <footer class="mt-5">
-  <div class="text-center py-3">
-    <div>
-      <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a>
-      <i class="iconfont icon-love"></i>
-      <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener">
-        <span>Fluid</span></a>
-    </div>
     
 
     
+  </main>
 
-    
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
   </div>
+  
+
+  
+
+  
 </footer>
 
-<!-- SCRIPTS -->
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
 <script  src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js" ></script>
 <script  src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js" ></script>
-<script  src="/js/debouncer.js" ></script>
-<script  src="/js/main.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
 
 <!-- Plugins -->
 
 
   
-    <script  src="/js/lazyload.js" ></script>
+    <script  src="/js/img-lazyload.js" ></script>
   
 
 
 
+  
+
+
+
+
+
+
+
+
+
   <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
-  <script  src="/js/clipboard-use.js" ></script>
 
 
 
+  <script  src="/js/local-search.js" ></script>
 
 
 
@@ -500,35 +825,19 @@ DirectX 12的初始化过程ID3d12CommandList
 
   <script  src="https://cdn.staticfile.org/typed.js/2.0.11/typed.min.js" ></script>
   <script>
-    var typed = new Typed('#subtitle', {
-      strings: [
-        '  ',
-        "Meow...meow...meow..&nbsp;",
-      ],
-      cursorChar: "_",
-      typeSpeed: 70,
-      loop: false,
-    });
-    typed.stop();
-    $(document).ready(function () {
-      $(".typed-cursor").addClass("h2");
-      typed.start();
-    });
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
   </script>
 
 
 
 
 
-  <script  src="/js/local-search.js" ></script>
-  <script>
-    var path = "/local-search.xml";
-    var inputArea = document.querySelector("#local-search-input");
-    inputArea.onclick = function () {
-      searchFunc(path, 'local-search-input', 'local-search-result');
-      this.onclick = null
-    }
-  </script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 
 
 
@@ -539,16 +848,8 @@ DirectX 12的初始化过程ID3d12CommandList
 
 
 
-
-
-
-
-
-
-
-
-
-
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
 
 
 </body>
